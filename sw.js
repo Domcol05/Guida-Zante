@@ -1,6 +1,5 @@
-const CACHE_NAME = 'zante-app-v1';
+const CACHE_NAME = 'zante-app-v2';
 
-// Inserisci qui tutti i file locali e gli asset usati
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -37,23 +36,20 @@ const ASSETS_TO_CACHE = [
   './white-party.jpg'
 ];
 
-// Sostituisci il blocco install in sw.js con questo:
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(async (cache) => {
-      // Prova a mettere in cache ogni asset singolarmente
       for (const asset of ASSETS_TO_CACHE) {
         try {
           await cache.add(asset);
         } catch (err) {
-          console.warn(`Impossibile memorizzare nella cache l'asset: ${asset}`, err);
+          console.warn(`Asset non memorizzato: ${asset}`, err);
         }
       }
     }).then(() => self.skipWaiting())
   );
 });
 
-// Attivazione: elimina vecchie cache se aggiorni la versione
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) => {
@@ -68,7 +64,6 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: risponde dalla cache, altrimenti tenta la rete
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
@@ -76,7 +71,6 @@ self.addEventListener('fetch', (event) => {
         return cachedResponse;
       }
       return fetch(event.request).catch(() => {
-        // Fallback in caso di assenza totale di rete
         if (event.request.mode === 'navigate') {
           return caches.match('./index.html');
         }
