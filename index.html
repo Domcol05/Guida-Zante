@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Zante 2026 | Programma di Viaggio</title>
+  
+  <!-- PWA & Web App Standalone Meta Tags -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Zante 2026">
+  <meta name="theme-color" content="#ffffff">
+  
+  <!-- Icona per Smartphone (iOS e Android) -->
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="icon" type="image/png" href="icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -18,6 +30,7 @@
       --sand-border: #faedcd;
       --sunset-coral: #e76f51;
       --sunset-orange: #f4a261;
+      --whatsapp-green: #25d366;
       --text-dark: #1b263b;
       --text-muted: #5c6b73;
       --card-shadow: 0 8px 24px rgba(2, 62, 138, 0.07);
@@ -200,7 +213,17 @@
     .badge-blue { background: #e0f2fe; color: #0369a1; }
     .badge-price { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
 
-    /* Media e Immagini */
+    /* Media & Immagini Cliccabili */
+    .flight-img, .place-img, .img-grid img {
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .flight-img:active, .place-img:active, .img-grid img:active {
+      opacity: 0.85;
+      transform: scale(0.98);
+    }
+
     .flight-img {
       width: 100%;
       border-radius: 14px;
@@ -296,6 +319,7 @@
       margin-bottom: 0;
     }
 
+    /* Action Buttons */
     .btn-maps {
       display: inline-flex;
       align-items: center;
@@ -312,6 +336,196 @@
     }
     .btn-maps:active {
       transform: scale(0.97);
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #25d366;
+      color: #ffffff !important;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
+      margin-right: 6px;
+      margin-top: 6px;
+    }
+
+    .btn-call {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #023e8a;
+      color: #ffffff !important;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 999px;
+      box-shadow: 0 3px 10px rgba(2, 62, 138, 0.25);
+      margin-top: 6px;
+    }
+
+    /* Driver List Box */
+    .driver-card {
+      background: #f8fbfe;
+      border: 1px solid #e1edf5;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .driver-name {
+      font-weight: 800;
+      color: var(--med-blue);
+      font-size: 0.95rem;
+    }
+    .driver-detail {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+
+    /* Step Guide */
+    .step-box {
+      background: #ffffff;
+      border: 1px solid #d9ebf7;
+      border-left: 4px solid var(--med-azure);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .step-header {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--med-blue);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+    .step-text {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .step-code {
+      background: #eef7fc;
+      border: 1px dashed #0077b6;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-weight: 700;
+      color: #023e8a;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    /* Animazione Easter Egg Sezione Cibo (Duo Memes) */
+    .meme-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      align-items: end;
+      padding: 20px 4px 10px 4px;
+    }
+
+    .meme-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      position: relative;
+    }
+
+    .speech-bubble {
+      position: relative;
+      background: #ffffff;
+      border: 2px solid var(--med-blue);
+      border-radius: 16px;
+      padding: 6px 12px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: #d90429;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 14px rgba(217, 4, 41, 0.18);
+      margin-bottom: 12px;
+      text-align: center;
+      white-space: nowrap;
+      animation: bubbleBounce 2.2s infinite ease-in-out;
+    }
+
+    .speech-bubble.delayed {
+      animation-delay: 0.35s;
+    }
+
+    .speech-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 8px 8px 0;
+      border-style: solid;
+      border-color: var(--med-blue) transparent;
+      display: block;
+      width: 0;
+    }
+
+    .spring-meme {
+      width: 100%;
+      max-width: 135px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.18));
+      transform-origin: bottom center;
+      animation: springBounce 2.2s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
+      cursor: pointer;
+    }
+
+    .spring-meme.delayed {
+      animation-delay: 0.35s;
+    }
+
+    @keyframes springBounce {
+      0%, 100% {
+        transform: scale(1, 1) translateY(0);
+      }
+      15% {
+        transform: scale(1.25, 0.65) translateY(18px); /* Compressione a molla */
+      }
+      32% {
+        transform: scale(0.75, 1.35) translateY(-32px); /* Estensione verso l'alto */
+      }
+      48% {
+        transform: scale(1.15, 0.85) translateY(8px); /* Rimbalzo elastico */
+      }
+      65% {
+        transform: scale(0.92, 1.08) translateY(-10px);
+      }
+      80% {
+        transform: scale(1.03, 0.97) translateY(2px);
+      }
+    }
+
+    @keyframes bubbleBounce {
+      0%, 100% {
+        transform: scale(1) translateY(0);
+      }
+      15% {
+        transform: scale(0.85) translateY(8px);
+      }
+      32% {
+        transform: scale(1.18) translateY(-22px);
+      }
+      48% {
+        transform: scale(1.04) translateY(4px);
+      }
+      65% {
+        transform: scale(1.08) translateY(-6px);
+      }
     }
 
     /* Checklist */
@@ -387,6 +601,53 @@
       cursor: pointer;
       padding: 2px 6px;
     }
+
+    /* Modal / Lightbox */
+    .image-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      backdrop-filter: blur(8px);
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .image-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .image-modal img {
+      max-width: 95%;
+      max-height: 85%;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #ffffff;
+      font-size: 1.6rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   </style>
 </head>
 <body>
@@ -397,6 +658,8 @@
     </div>
     <nav class="nav-scroll" id="navScroll">
       <button class="nav-pill active" onclick="switchTab('home')">🏠 Home</button>
+      <button class="nav-pill" onclick="switchTab('cars')">🚗 Auto</button>
+      <button class="nav-pill" onclick="switchTab('food')">🍔 Cibo</button>
       <button class="nav-pill" onclick="switchTab('day1')">1️⃣ Gio 27</button>
       <button class="nav-pill" onclick="switchTab('day2')">2️⃣ Ven 28</button>
       <button class="nav-pill" onclick="switchTab('day3')">3️⃣ Sab 29</button>
@@ -411,10 +674,11 @@
     
     <!-- HOME -->
     <section id="home" class="tab-content active">
+      
       <!-- Countdown Decollo -->
       <div class="card">
         <div class="card-header-tag">⏳ Conto alla Rovescia</div>
-        <div class="card-title">Partenza da Napoli</div>
+        <div class="card-title">Partenza da Napoli (NAP)</div>
         <p style="font-size: 0.85rem; color: var(--text-muted);">Decollo Volo EJU4171: <b>Gio 27 Ago 2026 ore 14:10</b></p>
         <div class="countdown-box">
           <div class="countdown-grid">
@@ -438,37 +702,289 @@
         </div>
       </div>
 
-      <!-- Alloggio -->
+      <!-- Quick Trip Info Strip -->
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px;">
+        <div style="background: #ffffff; border: 1px solid rgba(0,119,182,0.15); border-radius: 14px; padding: 10px; text-align: center; box-shadow: 0 4px 12px rgba(2,62,138,0.04);">
+          <div style="font-size: 1.1rem;">🗓️</div>
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--med-blue); margin-top: 2px;">7 Giorni</div>
+          <div style="font-size: 0.65rem; color: var(--text-muted);">27 Ago - 2 Set</div>
+        </div>
+        <div style="background: #ffffff; border: 1px solid rgba(0,119,182,0.15); border-radius: 14px; padding: 10px; text-align: center; box-shadow: 0 4px 12px rgba(2,62,138,0.04);">
+          <div style="font-size: 1.1rem;">🚗</div>
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--med-blue); margin-top: 2px;">3 Auto</div>
+          <div style="font-size: 0.65rem; color: var(--text-muted);">Cat. B Noleggio</div>
+        </div>
+        <div style="background: #ffffff; border: 1px solid rgba(0,119,182,0.15); border-radius: 14px; padding: 10px; text-align: center; box-shadow: 0 4px 12px rgba(2,62,138,0.04);">
+          <div style="font-size: 1.1rem;">⏰</div>
+          <div style="font-size: 0.85rem; font-weight: 800; color: var(--med-blue); margin-top: 2px;">Fuso +1h</div>
+          <div style="font-size: 0.65rem; color: var(--text-muted);">Ora Greca</div>
+        </div>
+      </div>
+
+      <!-- Alloggio Base -->
       <div class="card">
-        <div class="card-header-tag">🏨 Struttura & Base</div>
+        <div class="card-header-tag">🏨 Struttura & Alloggio</div>
         <div class="card-title">Paradise Apartments</div>
-        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">Laganas, Isola di Zacinto</p>
-        <a href="https://www.google.com/maps/search/?api=1&query=Paradise+Apartments+Laganas+Zakynthos" target="_blank" class="btn-maps">📍 Apri posizione su Maps</a>
+        <p style="font-size: 0.86rem; color: var(--text-muted); margin-bottom: 6px;">📍 Laganas, Zacinto (Grecia)</p>
+        <p style="font-size: 0.80rem; color: var(--text-muted); margin-bottom: 6px;">🔑 Check-in: <b>Giovedì 27 Agosto (ore 15:00)</b></p>
+        <p style="font-size: 0.80rem; color: var(--text-muted); margin-bottom: 12px;">🔑 Check-out: <b>Mercoledì 2 Settembre (ore 9:00 - 11:00)</b></p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Paradise+Apartments+Laganas+Zakynthos" target="_blank" class="btn-maps">📍 Apri su Google Maps</a>
       </div>
 
-      <!-- Volo Andata -->
+      <!-- Volo Andata (Boarding Style) -->
       <div class="card">
-        <span class="badge badge-orange">Bagaglio da Stiva: 20 kg</span>
-        <div class="card-title">🛫 Volo di Andata (EJU4171)</div>
-        <img src="immagine.png" alt="Dettagli Volo Andata" class="flight-img">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span class="badge badge-orange" style="margin-bottom: 0;">Bagaglio Stiva: 20 kg</span>
+          <span style="font-size: 0.75rem; font-weight: 700; color: var(--med-blue);">EJU4171</span>
+        </div>
+        <div class="card-title" style="margin-bottom: 6px;">🛫 Volo di Andata (easyJet)</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fbfe; border: 1px solid #dce8f0; border-radius: 12px; padding: 10px 14px; margin-bottom: 10px;">
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: var(--med-blue);">NAP</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted);">14:10 (ITA)</div>
+          </div>
+          <div style="font-size: 1.1rem; color: var(--sunset-coral);">➔</div>
+          <div style="text-align: right;">
+            <div style="font-size: 1.1rem; font-weight: 800; color: var(--med-blue);">ZTH</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted);">16:35 (GRE)</div>
+          </div>
+        </div>
       </div>
 
-      <!-- Volo Ritorno -->
+      <!-- Volo Ritorno (Boarding Style) -->
       <div class="card">
-        <span class="badge badge-blue">Bagaglio da Stiva: 23 kg</span>
-        <div class="card-title">🛬 Volo di Ritorno (FR3380)</div>
-        <img src="ryanair.jpg" alt="Dettagli Volo Ritorno" class="flight-img">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span class="badge badge-blue" style="margin-bottom: 0;">Bagaglio Stiva: 23 kg</span>
+          <span style="font-size: 0.75rem; font-weight: 700; color: var(--med-blue);">FR3380</span>
+        </div>
+        <div class="card-title" style="margin-bottom: 6px;">🛬 Volo di Ritorno (Ryanair)</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fbfe; border: 1px solid #dce8f0; border-radius: 12px; padding: 10px 14px; margin-bottom: 10px;">
+          <div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: var(--med-blue);">ZTH</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted);">14:25 (GRE)</div>
+          </div>
+          <div style="font-size: 1.1rem; color: var(--med-cyan);">➔</div>
+          <div style="text-align: right;">
+            <div style="font-size: 1.1rem; font-weight: 800; color: var(--med-blue);">NAP</div>
+            <div style="font-size: 0.72rem; color: var(--text-muted);">15:00 (ITA)</div>
+          </div>
+        </div>
       </div>
 
       <!-- Checklist -->
       <div class="card">
         <div class="card-header-tag">📝 Promemoria</div>
-        <div class="card-title">Checklist Bagagli & Cose Utili</div>
+        <div class="card-title">Checklist Bagagli & Documenti</div>
         <form class="checklist-form" id="checkForm" onsubmit="addItem(event)">
           <input type="text" id="checkInput" class="checklist-input" placeholder="Aggiungi oggetto..." required>
           <button type="submit" class="checklist-add-btn">+</button>
         </form>
         <ul class="checklist-items" id="checklistContainer"></ul>
+      </div>
+
+    </section>
+
+    <!-- SEZIONE NOLEGGIO AUTO -->
+    <section id="cars" class="tab-content">
+      
+      <!-- Riepilogo Prenotazione -->
+      <div class="card">
+        <div class="card-header-tag">🚘 Scheda Prenotazione</div>
+        <div class="card-title">3 Auto • Categoria B</div>
+        <div style="margin-bottom: 12px;">
+          <span class="badge badge-price">7 Giorni • 1.110€ Totali (370€ / auto)</span>
+          <span class="badge badge-orange">Pagamento in Contanti alla Consegna</span>
+        </div>
+        
+        <div class="timeline-node">
+          <div class="node-title">📍 Consegna (Delivery)</div>
+          <div class="node-desc"><b>Gio 27 Ago ore 16:45</b> • Aeroporto di Zante (ZTH)<br>
+          <i>(Volo EZY4171 atterra alle 16:35)</i></div>
+        </div>
+
+        <div class="timeline-node" style="border-left-color: var(--sunset-coral);">
+          <div class="node-title">📍 Riconsegna (Redelivery)</div>
+          <div class="node-desc"><b>Mer 02 Set ore 13:30</b> • Aeroporto di Zante (ZTH)<br>
+          <i>(Volo di ritorno decolla alle 14:25)</i></div>
+        </div>
+      </div>
+
+      <!-- Prezzi Carburante a Zante (Live & Reali) -->
+      <div class="card">
+        <div class="card-header-tag">⛽ Monitor Carburante Zante</div>
+        <div class="card-title">Prezzi Medi alla Pompa</div>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
+          Rilevazione stazioni di servizio a Zacinto (Grecia):
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 12px;">
+          
+          <!-- Benzina 95 -->
+          <div style="background: #f8fbfe; border: 1px solid #dce8f0; border-radius: 12px; padding: 10px;">
+            <div style="font-size: 0.72rem; font-weight: 800; color: var(--med-azure); text-transform: uppercase;">Benzina 95 (Green)</div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: var(--med-blue); margin-top: 2px;">~2,00 €<span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted);">/L</span></div>
+            <div style="font-size: 0.68rem; color: var(--text-muted); margin-top: 2px;">Range: 1,98€ - 2,12€</div>
+          </div>
+
+          <!-- Diesel -->
+          <div style="background: #f8fbfe; border: 1px solid #dce8f0; border-radius: 12px; padding: 10px;">
+            <div style="font-size: 0.72rem; font-weight: 800; color: #1b5e20; text-transform: uppercase;">Diesel / Gasolio</div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: var(--med-blue); margin-top: 2px;">~1,98 €<span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted);">/L</span></div>
+            <div style="font-size: 0.68rem; color: var(--text-muted); margin-top: 2px;">Range: 1,96€ - 2,13€</div>
+          </div>
+
+          <!-- Benzina 100 Ottani -->
+          <div style="background: #f8fbfe; border: 1px solid #dce8f0; border-radius: 12px; padding: 10px;">
+            <div style="font-size: 0.72rem; font-weight: 800; color: var(--sunset-coral); text-transform: uppercase;">Benzina 100 Ottani</div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: var(--med-blue); margin-top: 2px;">~2,22 €<span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted);">/L</span></div>
+            <div style="font-size: 0.68rem; color: var(--text-muted); margin-top: 2px;">Range: 2,18€ - 2,28€</div>
+          </div>
+
+          <!-- GPL (LPG) -->
+          <div style="background: #f8fbfe; border: 1px solid #dce8f0; border-radius: 12px; padding: 10px;">
+            <div style="font-size: 0.72rem; font-weight: 800; color: #b23a00; text-transform: uppercase;">GPL (Autogas)</div>
+            <div style="font-size: 1.2rem; font-weight: 800; color: var(--med-blue); margin-top: 2px;">~0,97 €<span style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted);">/L</span></div>
+            <div style="font-size: 0.68rem; color: var(--text-muted); margin-top: 2px;">Range: 0,95€ - 1,01€</div>
+          </div>
+
+        </div>
+
+        <div class="quote-box" style="margin-top: 8px;">
+          <p>💡 <b>Consiglio risparmio:</b> I distributori nella zona interna di <b>Ampelokipoi</b> e <b>Gaitani</b> sono in media 10-15 centesimi più economici rispetto ai benzinai proprio davanti all'aeroporto o lungo la movida di Laganas.</p>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=gas+station+zakynthos" target="_blank" class="btn-maps" style="margin-top: 10px;">📍 Trova Benzinai su Maps</a>
+      </div>
+
+      <!-- Contatti Driver WhatsApp -->
+      <div class="card">
+        <div class="card-header-tag">📞 Driver & Assistenza</div>
+        <div class="card-title">Contatti Noleggio</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 14px;">
+          I Driver porteranno le auto al parcheggio dell'aeroporto e gestiranno la consegna.
+        </p>
+
+        <div class="driver-card">
+          <div class="driver-name">👤 NEKTARIOS (Driver)</div>
+          <div class="driver-detail">+30 698 179 7596</div>
+          <div style="margin-top: 8px;">
+            <a href="https://wa.me/306981797596" target="_blank" class="btn-whatsapp">💬 WhatsApp</a>
+            <a href="tel:+306981797596" class="btn-call">📞 Chiama</a>
+          </div>
+        </div>
+
+        <div class="driver-card">
+          <div class="driver-name">👤 ALÌ (Driver)</div>
+          <div class="driver-detail">+30 694 502 7147</div>
+          <div style="margin-top: 8px;">
+            <a href="https://wa.me/306945027147" target="_blank" class="btn-whatsapp">💬 WhatsApp</a>
+            <a href="tel:+306945027147" class="btn-call">📞 Chiama</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Istruzioni Passo-Passo -->
+      <div class="card">
+        <div class="card-header-tag">📋 Guida Operativa</div>
+        <div class="card-title">Come Comportarsi (Step-by-Step)</div>
+
+        <div class="step-box" style="border-left-color: #ef233c;">
+          <div class="step-header">⚠️ STEP 1 • Ritardo Volo?</div>
+          <div class="step-text">
+            Se sai che il volo farà ritardo, <b>AVVISA SUBITO IL DRIVER PRIMA DI PARTIRE DALL'ITALIA</b>. Se non lo avvisi per tempo rischi di perdere i veicoli!
+          </div>
+        </div>
+
+        <div class="step-box">
+          <div class="step-header">📶 STEP 2 • Data Roaming</div>
+          <div class="step-text">
+            Appena atterri a Zante, entra nelle <b>Impostazioni</b> del telefono e attiva il <b>Roaming Dati</b>, altrimenti internet non funzionerà.
+          </div>
+        </div>
+
+        <div class="step-box">
+          <div class="step-header">🛬 STEP 3 • Consegna in Aeroporto</div>
+          <div class="step-text">
+            Appena tocchi terra, manda subito un messaggio WhatsApp al Driver:<br>
+            <span class="step-code">COLANDREA LANDED NOW</span><br>
+            Il driver ti aspetterà direttamente fuori nel parcheggio.
+          </div>
+        </div>
+
+        <div class="step-box">
+          <div class="step-header">🛫 STEP 4 • Riconsegna Auto</div>
+          <div class="step-text">
+            Il 2 settembre, <b>20 minuti prima</b> dell'appuntamento (verso le 13:10), manda un WhatsApp al Driver:<br>
+            <span class="step-code">COLANDREA WAITING IN AIRPORT NOW</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Guidatori Registrati -->
+      <div class="card">
+        <div class="card-header-tag">🪪 Intestatari Noleggio</div>
+        <div class="card-title">Dati Guidatori</div>
+
+        <div class="driver-card">
+          <div class="driver-name">🚗 Auto 1: Domenico Colandrea</div>
+          <div class="driver-detail">Nascita: 06/01/2005 • Monte di Procida</div>
+          <div class="driver-detail">Patente: <b>NA7683718U</b> (A1, B)</div>
+          <div class="driver-detail">Tel: +39 331 351 3535</div>
+        </div>
+
+        <div class="driver-card">
+          <div class="driver-name">🚗 Auto 2: Alessandro Cammarota</div>
+          <div class="driver-detail">Nascita: 29/09/2004 • Monte di Procida</div>
+          <div class="driver-detail">Patente: <b>NA7964747Y</b> (A2, B)</div>
+          <div class="driver-detail">Tel: +39 331 252 5288</div>
+        </div>
+
+        <div class="driver-card">
+          <div class="driver-name">🚗 Auto 3: Antonello Lubrano Lavadera</div>
+          <div class="driver-detail">Nascita: 09/08/2004 • Monte di Procida</div>
+          <div class="driver-detail">Patente: <b>NA7683717J</b> (A1, B)</div>
+          <div class="driver-detail">Tel: +39 334 760 4917</div>
+        </div>
+      </div>
+
+      <!-- Regole Importanti & Emergenze -->
+      <div class="card">
+        <div class="card-header-tag">🚨 Regole & Note Importanti</div>
+        <div class="card-title">Da Ricordare</div>
+        
+        <div class="quote-box" style="margin-top: 0;">
+          <p>• <b>Fuso Orario:</b> La Grecia è a <b>+1h rispetto all'Italia</b>. Regola subito l'orologio!</p>
+          <p>• <b>Documenti:</b> Portare Patente fisica e Carta d'identità / Passaporto.</p>
+          <p>• <b>Carburante:</b> Lasciare il serbatoio allo stesso livello di come viene consegnato (politica <i>same-to-same</i>).</p>
+          <p>• <b>Banconote piccole:</b> Utili per fare benzina la notte se i distributori automatici non accettano carte.</p>
+          <p>• <b>🚨 In caso di Incidente:</b> CONTATTARE SUBITO IL DRIVER che chiamerà la polizia e attiverà l'assicurazione. Se non contatti nessuno il danno resta a tuo carico.</p>
+          <p>• <b>Cancellazioni:</b> Sotto le 48h penale pari al 1° giorno di noleggio.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEZIONE CIBO (MEME DUO SPRING EASTER EGG) -->
+    <section id="food" class="tab-content">
+      <div class="card">
+        <div class="card-header-tag">🍽️ Gastronomia & Ristoranti</div>
+        <div class="card-title">Dove Mangiare a Zante</div>
+        <span class="badge badge-orange">🚧 Sezione in Lavorazione... the <b>frocest</b> non ha ancora svolto il suo lavoro</span>
+
+        <!-- Animazione Duo a Molla Memes -->
+        <div class="meme-container">
+          <div class="meme-wrapper">
+            <div class="speech-bubble">giugnooooo, tu si minorenn</div>
+            <img src="palumbo-removebg-preview.png" alt="Palumbo Meme" class="spring-meme">
+          </div>
+
+          <div class="meme-wrapper">
+            <div class="speech-bubble delayed">awawawawaw</div>
+            <img src="Soggetto.png" alt="Soggetto Meme" class="spring-meme delayed">
+          </div>
+        </div>
+
+        <div class="quote-box" style="text-align: center; margin-top: 14px;">
+          <p>🌯 <b>In arrivo:</b> Gyros Pita, Souvlaki tipico greco, Taverne di pesce fresco a Keri e migliori locali street food a Laganas!</p>
+        </div>
       </div>
     </section>
 
@@ -481,25 +997,26 @@
         <div class="day-period">☀️ Pomeriggio</div>
         <div class="timeline-node">
           <div class="node-title">Arrivo a Zante (Ore 16:35)</div>
-          <div class="node-desc">Atterraggio all'aeroporto di Zante con volo EJU4171.</div>
+          <div class="node-desc">Atterraggio all'aeroporto di Zante con volo EJU4171[cite: 5].</div>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Ritiro Macchina & Spesa</div>
-          <div class="node-desc">Ritiro delle auto a noleggio, sistemazione presso Paradise Apartments e spesa iniziale.</div>
+          <div class="node-desc">Ritiro delle auto a noleggio, sistemazione presso Paradise Apartments e spesa iniziale[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Paradise+Apartments+Laganas" target="_blank" class="btn-maps">📍 Paradise Apartments Maps</a>
         </div>
 
         <div class="day-period">🌙 Sera</div>
         <div class="timeline-node">
           <div class="node-title">Giro a Laganas + Cena</div>
-          <div class="node-desc">Prima passeggiata e cena nei locali di Laganas.</div>
+          <div class="node-desc">Prima passeggiata e cena nei locali di Laganas[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Laganas+Main+Road+Zakynthos" target="_blank" class="btn-maps">📍 Laganas Maps</a>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Serata Made in Italy</div>
-          <div class="node-desc">Festa e prima serata a tema nei club di Laganas.</div>
+          <div class="node-desc">Festa e prima serata a tema nei club di Laganas[cite: 5].</div>
+          <img src="made-in-italy.png" alt="Made in Italy" class="place-img">
         </div>
       </div>
     </section>
@@ -513,42 +1030,44 @@
         <div class="day-period">☀️ Mattina & Pomeriggio</div>
         <div class="timeline-node">
           <div class="node-title">Sveglia presto ore 10:00</div>
-          <div class="node-desc">Preparazione per la giornata di mare e sport acquatici.</div>
+          <div class="node-desc">Preparazione per la giornata di mare e sport acquatici[cite: 5].</div>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Banana Beach / Watersport</div>
-          <div class="node-desc">Spiaggia per le attrazioni d'acqua e giochi (lido attrezzato per riposare). Rientro verso le 16:30.</div>
+          <div class="node-desc">Spiaggia per le attrazioni d'acqua e giochi (lido attrezzato per riposare)[cite: 5]. Rientro verso le 16:30[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Banana+Beach+Zakynthos" target="_blank" class="btn-maps">📍 Banana Beach Maps</a>
           
           <div class="img-grid">
             <img src="banana-beach-1.jpg" alt="Banana Beach 1">
-            <img src="banana-beach-2.jpg" alt="Banana Beach 2">
+            <img src="banana-beach-2.webp" alt="Banana Beach 2">
           </div>
         </div>
 
         <div class="timeline-node" style="border-left-color: var(--sunset-orange);">
           <div class="node-title">ALTERNATIVA: St Nicholas Beach</div>
-          <div class="node-desc">St Nicholas Beach / Watersport PROMO / Chiesa sulla scogliera.</div>
+          <div class="node-desc">St Nicholas Beach / Watersport PROMO / Chiesa sulla scogliera[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=St+Nicholas+Beach+Vasilikos+Zakynthos" target="_blank" class="btn-maps">📍 St Nicholas Beach Maps</a>
           
           <div class="img-grid">
-            <img src="st-nicholas-1.jpg" alt="St Nicholas Beach 1">
-            <img src="st-nicholas-2.jpg" alt="St Nicholas Beach 2">
-            <img src="st-nicholas-chiesa.jpg" alt="Chiesa St Nicholas">
+            <img src="st-nicholas-1.jpeg" alt="St Nicholas Beach 1">
+            <img src="st-nicholas-2.jpeg" alt="St Nicholas Beach 2">
+            <img src="st-nicholas-chiesa.jpeg" alt="Chiesa St Nicholas">
           </div>
         </div>
 
         <div class="day-period">🌙 Sera</div>
         <div class="timeline-node">
           <div class="node-title">Ore 19:00 già vestiti (Eleganti)</div>
-          <div class="node-desc">Cena suggestiva al tramonto con vista sui faraglioni di Mizithres / Keri.</div>
+          <div class="node-desc">Cena suggestiva al tramonto con vista sui faraglioni di Mizithres / Keri[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Keri+Lighthouse+Mizithres+Zakynthos" target="_blank" class="btn-maps">📍 Faraglioni / Keri Maps</a>
+          <img src="keri-lighthouse.jpg" alt="Keri Lighthouse Tramonto" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Elegant Party</div>
-          <div class="node-desc">Serata elegante dopo cena.</div>
+          <div class="node-desc">Serata elegante dopo cena[cite: 5].</div>
+          <img src="elegant-party.jpg" alt="Elegant Party" class="place-img">
         </div>
       </div>
     </section>
@@ -562,25 +1081,26 @@
         <div class="day-period">☀️ Mattina & Pomeriggio</div>
         <div class="timeline-node">
           <div class="node-title">Sveglia ore 9:00 ➔ Cameo Island</div>
-          <div class="node-desc">Mattinata all'iconica Cameo Island. Segue pranzo veloce a Laganas.</div>
+          <div class="node-desc">Mattinata all'iconica Cameo Island[cite: 5]. Segue pranzo veloce a Laganas[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Cameo+Island+Zakynthos" target="_blank" class="btn-maps">📍 Cameo Island Maps</a>
           <img src="cameo-island.jpg" alt="Cameo Island" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Ore 14:30 ➔ Porto Zoro (Porto Azzurro)</div>
-          <div class="node-desc">Da Laganas a Porto Zoro: 19 km (~35 min). Lido attrezzato.</div>
+          <div class="node-desc">Da Laganas a Porto Zoro: 19 km (~35 min)[cite: 5]. Lido attrezzato[cite: 5].</div>
           <div class="quote-box">
-            <p>• <i>"I prezzi per un ombrellone è di 30 Euro per le prime 2 file e 20 Euro per le altre"</i></p>
-            <p>• <i>"Prima fila, lettini luxury 30€ per tutta la giornata"</i></p>
-            <p>• <i>"Costo degli ombrelloni su spiaggia 25 euro, 15 per quelli sull’erba"</i></p>
-            <p>• <i>"Lato sx sdraio normali a 20€ mentre i lettini più comodi sul lato dx costano 30€ (coppia di lettini e ombrellone)"</i></p>
+            <p>• <i>"I prezzi per un ombrellone è di 30 Euro per le prime 2 file e 20 Euro per le altre"</i>[cite: 5]</p>
+            <p>• <i>"Prima fila, lettini luxury 30€ per tutta la giornata"</i>[cite: 5]</p>
+            <p>• <i>"Costo degli ombrelloni su spiaggia 25 euro, 15 per quelli sull’erba"</i>[cite: 5]</p>
+            <p>• <i>"Lato sx sdraio normali a 20€ mentre i lettini più comodi sul lato dx costano 30€ (coppia di lettini e ombrellone)"</i>[cite: 5]</p>
           </div>
           <a href="https://www.google.com/maps/search/?api=1&query=Porto+Zoro+Beach+Porto+Azzurro+Zakynthos" target="_blank" class="btn-maps">📍 Porto Zoro Maps</a>
           
           <div class="img-grid">
-            <img src="porto-zoro-1.jpg" alt="Porto Zoro 1">
-            <img src="porto-zoro-2.jpg" alt="Porto Zoro 2">
+            <img src="porto-zoro-1.jpeg" alt="Porto Zoro 1">
+            <img src="porto-zoro-2.webp" alt="Porto Zoro 2">
+            <img src="porto-zoro-3.jpg" alt="Porto Zoro 3">
           </div>
         </div>
 
@@ -589,7 +1109,7 @@
           <div class="node-title">Dolce Vita @ Aura Club Laganas</div>
           <div class="node-desc">
             <span class="badge badge-price">Inizio 23:30 • 16,50€ (1 drink incluso)</span><br>
-            Serata clubbing al Dolce Vita / Aura Club.
+            Serata clubbing al Dolce Vita / Aura Club[cite: 5].
           </div>
           <a href="https://www.google.com/maps/search/?api=1&query=Aura+Club+Laganas+Zakynthos" target="_blank" class="btn-maps">📍 Aura Club Maps</a>
           <img src="aura-club.jpg" alt="Dolce Vita Aura Club" class="place-img">
@@ -606,28 +1126,28 @@
         <div class="day-period">☀️ Mattina & Pomeriggio</div>
         <div class="timeline-node">
           <div class="node-title">Sveglia 11:00 & Preparazione Pranzo</div>
-          <div class="node-desc">Spesa e pranzo. Alle 13:30 bisogna aver raggiunto il porto per partire alle 14:00.</div>
+          <div class="node-desc">Spesa e pranzo[cite: 5]. Alle 13:30 bisogna aver raggiunto il porto per partire alle 14:00[cite: 5].</div>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Escursione Faraglioni di Mizithres</div>
           <div class="node-desc">
             <span class="badge badge-price">Partenza 14:00 • 30€ • Durata 4h</span><br>
-            Escursione in barca ai faraglioni. Termine tour previsto per le ore 18:00.
+            Escursione in barca ai faraglioni[cite: 5]. Termine tour previsto per le ore 18:00[cite: 5].
           </div>
-          <a href="https://www.google.com/maps/search/?api=1&query=Porto+Keri+Zakynthos" target="_blank" class="btn-maps">📍 Porto Partenza Maps</a>
+          <a href="https://maps.app.goo.gl/M82iFWdi5qKzA1Yp6" target="_blank" class="btn-maps">📍 Porto Partenza Maps</a>
           
           <div class="img-grid">
-            <img src="escursione-mizithres-1.jpg" alt="Mizithres Barca 1">
-            <img src="escursione-mizithres-2.jpg" alt="Mizithres Barca 2">
-            <img src="escursione-mizithres-3.jpg" alt="Mizithres Barca 3">
+            <img src="escursione-mizithres-1.png" alt="Mizithres Barca 1">
+            <img src="escursione-mizithres-2.webp" alt="Mizithres Barca 2">
+            <img src="escursione-mizithres-3.webp" alt="Mizithres Barca 3">
           </div>
         </div>
 
         <div class="day-period">🌅 Tramonto (Ore 19:57)</div>
         <div class="timeline-node" style="border-left-color: var(--sunset-coral);">
           <div class="node-title">Faraglioni dall'alto al Tramonto</div>
-          <div class="node-desc">Dal porto ai faraglioni (Myzithres) circa 30 min in auto + breve camminata a piedi. Tramonto alle <b>19:57</b>.</div>
+          <div class="node-desc">Dal porto ai faraglioni (Myzithres) circa 30 min in auto + breve camminata a piedi[cite: 5]. Tramonto alle <b>19:57</b>[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Mizithres+Viewpoint+Keri+Zakynthos" target="_blank" class="btn-maps">📍 Viewpoint Mizithres Maps</a>
           <img src="mizithres-tramonto.jpg" alt="Faraglioni Mizithres al Tramonto" class="place-img">
         </div>
@@ -635,8 +1155,9 @@
         <div class="day-period">🌙 Sera</div>
         <div class="timeline-node">
           <div class="node-title">Preparazione & Zante Town</div>
-          <div class="node-desc">Visita a Zante Town per chi vuole; ritrovo in tarda serata nei bar a Laganas.</div>
+          <div class="node-desc">Visita a Zante Town per chi vuole; ritrovo in tarda serata nei bar a Laganas[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Solomos+Square+Zante+Town" target="_blank" class="btn-maps">📍 Zante Town Maps</a>
+          <img src="zante-town-night.jpg" alt="Zante Town di Notte" class="place-img">
         </div>
       </div>
     </section>
@@ -650,40 +1171,40 @@
         <div class="day-period">☀️ Mattina & Pomeriggio</div>
         <div class="timeline-node">
           <div class="node-title">Sveglia ore 9:00 (giornata lunghissima)</div>
-          <div class="node-desc">Preparazione veloce per iniziare il giro della costa ovest.</div>
+          <div class="node-desc">Preparazione veloce per iniziare il giro della costa ovest[cite: 5].</div>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">1. Spiaggia del Relitto dall'alto</div>
-          <div class="node-desc">La celebre terrazza panoramica affacciata su Navagio Beach.</div>
+          <div class="node-desc">La celebre terrazza panoramica affacciata su Navagio Beach[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Navagio+Beach+Viewpoint+Zakynthos" target="_blank" class="btn-maps">📍 Relitto dall'alto Maps</a>
-          <img src="spiaggia-relitto.jpg" alt="Spiaggia del Relitto dall'alto" class="place-img">
+          <img src="navagio-viewpoint.webp" alt="Spiaggia del Relitto dall'alto" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">2. Porto Vromi (28 min auto)</div>
-          <div class="node-desc">Spostamento in auto verso la baia di Porto Vromi.</div>
+          <div class="node-desc">Spostamento in auto verso la baia di Porto Vromi[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Porto+Vromi+Zakynthos" target="_blank" class="btn-maps">📍 Porto Vromi Maps</a>
           <img src="porto-vromi.jpg" alt="Porto Vromi" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">3. Porto Limnionas (38 min auto)</div>
-          <div class="node-desc">Spostamento verso lo splendido fiordo naturale con mare trasparente.</div>
+          <div class="node-desc">Spostamento verso lo splendido fiordo naturale con mare trasparente[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Porto+Limnionas+Zakynthos" target="_blank" class="btn-maps">📍 Porto Limnionas Maps</a>
-          <img src="porto-limnionas.jpg" alt="Porto Limnionas" class="place-img">
+          <img src="porto-limionas.avif" alt="Porto Limnionas" class="place-img">
         </div>
 
         <div class="day-period">🌙 Sera</div>
         <div class="timeline-node">
           <div class="node-title">Cena Greca (Souvlaki)</div>
-          <div class="node-desc">Cena tradizionale greca con spiedini di carne e gyros pita.</div>
-          <img src="cena-souvlaki.jpg" alt="Cena Greca Souvlaki" class="place-img">
+          <div class="node-desc">Cena tradizionale greca con spiedini di carne e gyros pita[cite: 5].</div>
+          <img src="cena-souvlaki.jpeg" alt="Cena Greca Souvlaki" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Serata Bar Laganas oppure Borgo Greco (Tsilivi)</div>
-          <div class="node-desc">Drink nei bar di Laganas o serata tranquilla nel borgo di Tsilivi.</div>
+          <div class="node-desc">Drink nei bar di Laganas o serata tranquilla nel borgo di Tsilivi[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Tsilivi+Zakynthos" target="_blank" class="btn-maps">📍 Tsilivi Maps</a>
         </div>
       </div>
@@ -698,47 +1219,40 @@
         <div class="day-period">☀️ Mattina & Pomeriggio</div>
         <div class="timeline-node">
           <div class="node-title">Sveglia presto ore 10:00</div>
-          <div class="node-desc">Partenza in auto verso Makris Gialos (circa 37 min).</div>
+          <div class="node-desc">Partenza in auto verso Makris Gialos (circa 37 min)[cite: 5].</div>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">1. Makris Gialos</div>
-          <div class="node-desc">Spiaggia di ciottoli e acque trasparenti nella costa nord-est.</div>
+          <div class="node-desc">Spiaggia di ciottoli e acque trasparenti nella costa nord-est[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Makris+Gialos+Beach+Zakynthos" target="_blank" class="btn-maps">📍 Makris Gialos Maps</a>
           <img src="makris-gialos.jpg" alt="Makris Gialos" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">2. Xigia Pelegaki Beach</div>
-          <div class="node-desc">La spettacolare caletta adiacente con mare turchese e scogliere.</div>
+          <div class="node-desc">La spettacolare caletta adiacente con mare turchese e scogliere[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Pelagaki+Beach+Xigia+Zakynthos" target="_blank" class="btn-maps">📍 Xigia Pelegaki Maps</a>
-          
-          <div class="img-grid">
-            <img src="xigia-pelegaki-1.jpg" alt="Xigia Pelegaki 1">
-            <img src="xigia-pelegaki-2.jpg" alt="Xigia Pelegaki 2">
-          </div>
+          <img src="xigia-pelegaki-1.jpg" alt="Xigia Pelegaki 1" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">3. Xigia Sulfur Beach</div>
-          <div class="node-desc">Famosa spiaggia sulfurea e acque termali. Rientro a casa per le ore 19:00.</div>
+          <div class="node-desc">Famosa spiaggia sulfurea e acque termali[cite: 5]. Rientro a casa per le ore 19:00[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Xigia+Sulfur+Beach+Zakynthos" target="_blank" class="btn-maps">📍 Xigia Sulfur Beach Maps</a>
-          
-          <div class="img-grid">
-            <img src="xigia-sulfur-1.jpg" alt="Xigia Sulfur 1">
-            <img src="xigia-sulfur-2.jpg" alt="Xigia Sulfur 2">
-          </div>
+          <img src="xigia-sulfur-1.jpg" alt="Xigia Sulfur 1" class="place-img">
         </div>
 
         <div class="day-period">🌙 Sera</div>
         <div class="timeline-node">
           <div class="node-title">Si scende alle ore 22:00</div>
-          <div class="node-desc">Cena fast ed economica per prepararsi alla serata.</div>
+          <div class="node-desc">Cena fast ed economica per prepararsi alla serata[cite: 5].</div>
         </div>
 
         <div class="timeline-node" style="border-left-color: #ffffff; background: #ffffff; border: 1px solid #d0e2ec;">
           <div class="node-title">⚪ Serata White Party</div>
-          <div class="node-desc">Outfit total white per l'ultima festa a Zante!</div>
+          <div class="node-desc">Outfit total white per l'ultima festa a Zante[cite: 5]!</div>
+          <img src="white-party.jpg" alt="White Party" class="place-img">
         </div>
       </div>
     </section>
@@ -751,23 +1265,29 @@
 
         <div class="timeline-node">
           <div class="node-title">Check-Out Appartamenti (Ore 9:00 - 11:00)</div>
-          <div class="node-desc">Chiusura valigie e check-out presso i Paradise Apartments.</div>
+          <div class="node-desc">Chiusura valigie e check-out presso i Paradise Apartments[cite: 5].</div>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Consegna Auto (Ore 13:30)</div>
-          <div class="node-desc">Consegna auto impostata alle 13:30 (anche se rientreremo prima in aeroporto).</div>
+          <div class="node-desc">Consegna auto impostata alle 13:30 (anche se rientreremo prima in aeroporto)[cite: 5].</div>
         </div>
 
         <div class="timeline-node" style="border-left-color: var(--sunset-coral);">
           <div class="node-title">Volo di Ritorno FR3380 (Ore 14:25 ➔ 15:00)</div>
-          <div class="node-desc">L'aereo parte alle ore 14:25 dall'Aeroporto di Zacinto (ZTH) verso Napoli (NAP).</div>
+          <div class="node-desc">L'aereo parte alle ore 14:25 dall'Aeroporto di Zacinto (ZTH) verso Napoli (NAP)[cite: 5].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Zakynthos+Airport+Dionysios+Solomos" target="_blank" class="btn-maps">📍 Aeroporto ZTH Maps</a>
         </div>
       </div>
     </section>
 
   </main>
+
+  <!-- Modal per Visualizzazione Immagini a Schermo Intero -->
+  <div class="image-modal" id="imageModal" onclick="closeModal()">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <img id="modalImg" src="" alt="Anteprima a schermo intero" onclick="event.stopPropagation()">
+  </div>
 
   <script>
     function switchTab(tabId) {
@@ -777,13 +1297,31 @@
       document.getElementById(tabId).classList.add('active');
       
       const navButtons = document.querySelectorAll('.nav-pill');
-      const tabs = ['home', 'day1', 'day2', 'day3', 'day4', 'day5', 'day6', 'day7'];
+      const tabs = ['home', 'cars', 'food', 'day1', 'day2', 'day3', 'day4', 'day5', 'day6', 'day7'];
       const index = tabs.indexOf(tabId);
       if (index !== -1 && navButtons[index]) {
         navButtons[index].classList.add('active');
         navButtons[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
       }
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function initImageModal() {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImg');
+      
+      document.querySelectorAll('img').forEach(img => {
+        if (img.id !== 'modalImg' && !img.classList.contains('spring-meme')) {
+          img.addEventListener('click', () => {
+            modalImg.src = img.src;
+            modal.classList.add('active');
+          });
+        }
+      });
+    }
+
+    function closeModal() {
+      document.getElementById('imageModal').classList.remove('active');
     }
 
     const targetDeparture = new Date('2026-08-27T14:10:00+02:00').getTime();
@@ -815,12 +1353,19 @@
     updateCountdown();
 
     const initialChecklist = [
-      { text: "Documenti & Carta d'identità", checked: false },
-      { text: "Patente per noleggio auto", checked: false },
-      { text: "Scarpe da scoglio per le calette", checked: false },
-      { text: "Vestiti eleganti (Serata Faraglioni)", checked: false },
-      { text: "Outfit bianco (White Party)", checked: false },
-      { text: "Crema solare e teli mare", checked: false }
+      { text: "Patente fisica (per noleggio auto)", checked: false },
+      { text: "Documenti / Carta d'identità", checked: false },
+      { text: "Contanti", checked: false },
+      { text: "Outfit Elegante (Venerdì 28)", checked: false },
+      { text: "Outfit Total White (Martedì 1)", checked: false },
+      { text: "Scarpe da scoglio (Porto Limnionas)", checked: false },
+      { text: "Scarpe comode (Sentiero tramonto Mizithres)", checked: false },
+      { text: "Costume scuro/vecchio (Zolfo Xigia Beach)", checked: false },
+      { text: "Maschera e boccaglio snorkeling", checked: false },
+      { text: "Sacca impermeabile / cover telefono", checked: false },
+      { text: "Crema solare & Doposole", checked: false },
+      { text: "Felpa leggera per la barca", checked: false },
+      { text: "Powerbank & Cavi ricarica", checked: false }
     ];
 
     function getChecklist() {
@@ -877,6 +1422,7 @@
     }
 
     renderChecklist();
+    initImageModal();
   </script>
 </body>
 </html>
