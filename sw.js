@@ -1,4 +1,4 @@
-const CACHE_NAME = 'zante-app-v2';
+const CACHE_NAME = 'zante-app-v3';
 
 const ASSETS_TO_CACHE = [
   './',
