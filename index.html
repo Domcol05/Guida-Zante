@@ -214,13 +214,55 @@
     .badge-blue { background: #e0f2fe; color: #0369a1; }
     .badge-price { background: #e8f5e9; color: #1b5e20; border: 1px solid #c8e6c9; }
 
+    /* Flight Styling */
+    .flight-slot {
+      background: #f8fbfe;
+      border: 1px solid #dce8f0;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .flight-slot:last-child {
+      margin-bottom: 0;
+    }
+    .flight-time-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .flight-people-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #dce8f0;
+    }
+    .person-chip {
+      display: inline-flex;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid #cfdfea;
+      border-radius: 6px;
+      padding: 3px 8px;
+      font-size: 0.73rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+    .person-chip.is-me {
+      background: #023e8a;
+      color: #ffffff;
+      border-color: #023e8a;
+    }
+
     /* Media & Immagini Cliccabili */
-    .flight-img, .place-img, .img-grid img {
+    .flight-img, .place-img, .img-grid img, .resto-img, .nap-img {
       cursor: pointer;
       transition: opacity 0.2s ease, transform 0.2s ease;
     }
 
-    .flight-img:active, .place-img:active, .img-grid img:active {
+    .flight-img:active, .place-img:active, .img-grid img:active, .resto-img:active, .nap-img:active {
       opacity: 0.85;
       transform: scale(0.98);
     }
@@ -339,6 +381,25 @@
       transform: scale(0.97);
     }
 
+    .btn-pdf {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #d90429, #ef233c);
+      color: #ffffff !important;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 9px 16px;
+      border-radius: 999px;
+      margin-top: 10px;
+      box-shadow: 0 3px 12px rgba(217, 4, 41, 0.28);
+      cursor: pointer;
+    }
+    .btn-pdf:active {
+      transform: scale(0.97);
+    }
+
     .btn-whatsapp {
       display: inline-flex;
       align-items: center;
@@ -422,6 +483,72 @@
       color: #023e8a;
       display: inline-block;
       margin-top: 4px;
+    }
+
+    /* Valigia Outfit Inputs */
+    .outfit-block {
+      background: #f8fbfe;
+      border: 1px solid #dce8f0;
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 12px;
+    }
+    .outfit-title {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--med-blue);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .outfit-textarea {
+      width: 100%;
+      border: 1px solid #cbdde9;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font-size: 0.84rem;
+      background: #ffffff;
+      color: var(--text-dark);
+      resize: vertical;
+      min-height: 48px;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .outfit-textarea:focus {
+      border-color: var(--med-azure);
+      box-shadow: 0 0 0 2px rgba(0, 119, 182, 0.15);
+    }
+
+    /* Ristoranti Card UI */
+    .resto-card {
+      background: #ffffff;
+      border: 1px solid #dce8f0;
+      border-radius: 14px;
+      padding: 12px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .resto-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+    .resto-name {
+      font-weight: 800;
+      color: var(--med-blue);
+      font-size: 0.95rem;
+    }
+    .resto-img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 8px;
+      border: 1px solid #e2edf5;
+      background: #e9f2f9;
+      display: block;
     }
 
     /* Animazione Easter Egg Sezione Cibo (Duo Memes) */
@@ -659,6 +786,7 @@
     </div>
     <nav class="nav-scroll" id="navScroll">
       <button class="nav-pill active" onclick="switchTab('home')">🏠 Home</button>
+      <button class="nav-pill" onclick="switchTab('valigia')">🧳 Valigia</button>
       <button class="nav-pill" onclick="switchTab('cars')">🚗 Auto</button>
       <button class="nav-pill" onclick="switchTab('food')">🍔 Cibo</button>
       <button class="nav-pill" onclick="switchTab('day1')">1️⃣ Gio 27</button>
@@ -680,7 +808,7 @@
       <div class="card">
         <div class="card-header-tag">⏳ Conto alla Rovescia</div>
         <div class="card-title">Partenza da Napoli (NAP)</div>
-        <p style="font-size: 0.85rem; color: var(--text-muted);">Decollo Volo EJU4171: <b>Gio 27 Ago 2026 ore 14:10</b></p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Decollo Voli: <b>Gio 27 Ago 2026</b></p>
         <div class="countdown-box">
           <div class="countdown-grid">
             <div class="countdown-item">
@@ -732,55 +860,234 @@
         <a href="https://www.google.com/maps/search/?api=1&query=Paradise+Apartments+Laganas+Zakynthos" target="_blank" class="btn-maps">📍 Apri su Google Maps</a>
       </div>
 
-      <!-- Volo Andata (Boarding Style) -->
+      <!-- Voli di Andata -->
       <div class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <span class="badge badge-orange" style="margin-bottom: 0;">Bagaglio Stiva: 20 kg</span>
-          <span style="font-size: 0.75rem; font-weight: 700; color: var(--med-blue);">EJU4171</span>
-        </div>
-        <div class="card-title" style="margin-bottom: 6px;">🛫 Volo di Andata (easyJet)</div>
-        <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fbfe; border: 1px solid #dce8f0; border-radius: 12px; padding: 10px 14px; margin-bottom: 10px;">
-          <div>
-            <div style="font-size: 1.1rem; font-weight: 800; color: var(--med-blue);">NAP</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted);">14:10 (ITA)</div>
+        <div class="card-header-tag">🛫 Giovedì 27 Agosto</div>
+        <div class="card-title">Voli di Andata</div>
+
+        <!-- Slot 1 (14:10 - 16:35) -->
+        <div class="flight-slot">
+          <div class="flight-time-row">
+            <div>
+              <div style="font-size: 1.05rem; font-weight: 800; color: var(--med-blue);">14:10 <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 500;">(ITA)</span></div>
+              <div style="font-size: 0.74rem; font-weight: 700; color: var(--med-azure);">NAP (Napoli)</div>
+            </div>
+            <div style="text-align: center;">
+              <span class="badge badge-orange" style="margin-bottom: 2px; padding: 2px 8px;">1h 25m</span>
+              <div style="font-size: 1rem; color: var(--sunset-coral);">➔</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 1.05rem; font-weight: 800; color: var(--med-blue);">16:35 <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 500;">(GRE)</span></div>
+              <div style="font-size: 0.74rem; font-weight: 700; color: var(--med-azure);">ZTH (Zante)</div>
+            </div>
           </div>
-          <div style="font-size: 1.1rem; color: var(--sunset-coral);">➔</div>
-          <div style="text-align: right;">
-            <div style="font-size: 1.1rem; font-weight: 800; color: var(--med-blue);">ZTH</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted);">16:35 (GRE)</div>
+          <div style="font-size: 0.75rem; font-weight: 800; color: var(--med-blue); margin-top: 4px;">👥 Passeggeri (11):</div>
+          <div class="flight-people-list">
+            <span class="person-chip is-me">DOMENICO</span>
+            <span class="person-chip">THOMAS</span>
+            <span class="person-chip">PALUMBO</span>
+            <span class="person-chip">MARCO</span>
+            <span class="person-chip">LEONE</span>
+            <span class="person-chip">GIUGNO</span>
+            <span class="person-chip">CECCIO</span>
+            <span class="person-chip">ANNALISA</span>
+            <span class="person-chip">LAVINIA</span>
+            <span class="person-chip">MARIANA</span>
+            <span class="person-chip">VALENTINA</span>
+          </div>
+        </div>
+
+        <!-- Slot 2 (10:00 - 12:30) -->
+        <div class="flight-slot">
+          <div class="flight-time-row">
+            <div>
+              <div style="font-size: 1.05rem; font-weight: 800; color: var(--med-blue);">10:00 <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 500;">(ITA)</span></div>
+              <div style="font-size: 0.74rem; font-weight: 700; color: var(--med-azure);">NAP (Napoli)</div>
+            </div>
+            <div style="text-align: center;">
+              <span class="badge badge-blue" style="margin-bottom: 2px; padding: 2px 8px;">1h 30m</span>
+              <div style="font-size: 1rem; color: var(--med-cyan);">➔</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 1.05rem; font-weight: 800; color: var(--med-blue);">12:30 <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 500;">(GRE)</span></div>
+              <div style="font-size: 0.74rem; font-weight: 700; color: var(--med-azure);">ZTH (Zante)</div>
+            </div>
+          </div>
+          <div style="font-size: 0.75rem; font-weight: 800; color: var(--med-blue); margin-top: 4px;">👥 Passeggeri (3):</div>
+          <div class="flight-people-list">
+            <span class="person-chip">ANTONELLO</span>
+            <span class="person-chip">TOMMASO</span>
+            <span class="person-chip">BROLY</span>
           </div>
         </div>
       </div>
 
-      <!-- Volo Ritorno (Boarding Style) -->
+      <!-- Voli di Ritorno -->
       <div class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-          <span class="badge badge-blue" style="margin-bottom: 0;">Bagaglio Stiva: 23 kg</span>
-          <span style="font-size: 0.75rem; font-weight: 700; color: var(--med-blue);">FR3380</span>
-        </div>
-        <div class="card-title" style="margin-bottom: 6px;">🛬 Volo di Ritorno (Ryanair)</div>
-        <div style="display: flex; justify-content: space-between; align-items: center; background: #f8fbfe; border: 1px solid #dce8f0; border-radius: 12px; padding: 10px 14px; margin-bottom: 10px;">
-          <div>
-            <div style="font-size: 1.1rem; font-weight: 800; color: var(--med-blue);">ZTH</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted);">14:25 (GRE)</div>
+        <div class="card-header-tag">🛬 Mercoledì 2 Settembre</div>
+        <div class="card-title">Voli di Ritorno</div>
+
+        <!-- Slot 1 (14:25 - 15:00) -->
+        <div class="flight-slot">
+          <div class="flight-time-row">
+            <div>
+              <div style="font-size: 1.05rem; font-weight: 800; color: var(--med-blue);">14:25 <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 500;">(GRE)</span></div>
+              <div style="font-size: 0.74rem; font-weight: 700; color: var(--med-azure);">ZTH (Zante)</div>
+            </div>
+            <div style="text-align: center;">
+              <span class="badge badge-orange" style="margin-bottom: 2px; padding: 2px 8px;">1h 35m</span>
+              <div style="font-size: 1rem; color: var(--sunset-coral);">➔</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 1.05rem; font-weight: 800; color: var(--med-blue);">15:00 <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 500;">(ITA)</span></div>
+              <div style="font-size: 0.74rem; font-weight: 700; color: var(--med-azure);">NAP (Napoli)</div>
+            </div>
           </div>
-          <div style="font-size: 1.1rem; color: var(--med-cyan);">➔</div>
-          <div style="text-align: right;">
-            <div style="font-size: 1.1rem; font-weight: 800; color: var(--med-blue);">NAP</div>
-            <div style="font-size: 0.72rem; color: var(--text-muted);">15:00 (ITA)</div>
+          <div style="font-size: 0.75rem; font-weight: 800; color: var(--med-blue); margin-top: 4px;">👥 Passeggeri (8):</div>
+          <div class="flight-people-list">
+            <span class="person-chip is-me">DOMENICO</span>
+            <span class="person-chip">THOMAS</span>
+            <span class="person-chip">PALUMBO</span>
+            <span class="person-chip">MARCO</span>
+            <span class="person-chip">LEONE</span>
+            <span class="person-chip">GIUGNO</span>
+            <span class="person-chip">CECCIO</span>
+            <span class="person-chip">VALENTINA</span>
+          </div>
+        </div>
+
+        <!-- Slot 2 (15:15 - 15:55) -->
+        <div class="flight-slot">
+          <div class="flight-time-row">
+            <div>
+              <div style="font-size: 1.05rem; font-weight: 800; color: var(--med-blue);">15:15 <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 500;">(GRE)</span></div>
+              <div style="font-size: 0.74rem; font-weight: 700; color: var(--med-azure);">ZTH (Zante)</div>
+            </div>
+            <div style="text-align: center;">
+              <span class="badge badge-blue" style="margin-bottom: 2px; padding: 2px 8px;">1h 40m</span>
+              <div style="font-size: 1rem; color: var(--med-cyan);">➔</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 1.05rem; font-weight: 800; color: var(--med-blue);">15:55 <span style="font-size: 0.72rem; color: var(--text-muted); font-weight: 500;">(ITA)</span></div>
+              <div style="font-size: 0.74rem; font-weight: 700; color: var(--med-azure);">NAP (Napoli)</div>
+            </div>
+          </div>
+          <div style="font-size: 0.75rem; font-weight: 800; color: var(--med-blue); margin-top: 4px;">👥 Passeggeri (6):</div>
+          <div class="flight-people-list">
+            <span class="person-chip">ANNALISA</span>
+            <span class="person-chip">LAVINIA</span>
+            <span class="person-chip">MARIANA</span>
+            <span class="person-chip">ANTONELLO</span>
+            <span class="person-chip">TOMMASO</span>
+            <span class="person-chip">BROLY</span>
           </div>
         </div>
       </div>
 
-      <!-- Checklist -->
+    </section>
+
+    <!-- SEZIONE VALIGIA -->
+    <section id="valigia" class="tab-content">
+      
+      <!-- Cose Fondamentali -->
       <div class="card">
-        <div class="card-header-tag">📝 Promemoria</div>
-        <div class="card-title">Checklist Bagagli & Documenti</div>
+        <div class="card-header-tag">🎒 Da Non Dimenticare</div>
+        <div class="card-title">Cose Fondamentali</div>
         <form class="checklist-form" id="checkForm" onsubmit="addItem(event)">
-          <input type="text" id="checkInput" class="checklist-input" placeholder="Aggiungi oggetto..." required>
+          <input type="text" id="checkInput" class="checklist-input" placeholder="Aggiungi oggetto alla lista..." required>
           <button type="submit" class="checklist-add-btn">+</button>
         </form>
         <ul class="checklist-items" id="checklistContainer"></ul>
+      </div>
+
+      <!-- Pianificatore Outfit 6 Serate -->
+      <div class="card">
+        <div class="card-header-tag">🌙 Serate</div>
+        <div class="card-title">Outfit Serate</div>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 12px;">
+          I tuoi appunti si salvano automaticamente su questo dispositivo.
+        </p>
+
+        <!-- Serata 1 -->
+        <div class="outfit-block">
+          <div class="outfit-title">
+            <span>🇮🇹 Gio 27: Made in Italy</span>
+            <span class="badge badge-orange" style="margin-bottom:0;">Discoteca 1</span>
+          </div>
+          <textarea class="outfit-textarea" id="outfit_night_1" placeholder="Scrivi il tuo outfit per la serata Made in Italy..." oninput="saveOutfit(this.id)"></textarea>
+        </div>
+
+        <!-- Serata 2 -->
+        <div class="outfit-block">
+          <div class="outfit-title">
+            <span>👔 Ven 28: Elegant Party</span>
+            <span class="badge badge-orange" style="margin-bottom:0;">Discoteca 2</span>
+          </div>
+          <textarea class="outfit-textarea" id="outfit_night_2" placeholder="Scrivi il tuo outfit elegante..." oninput="saveOutfit(this.id)"></textarea>
+        </div>
+
+        <!-- Serata 3 -->
+        <div class="outfit-block">
+          <div class="outfit-title">
+            <span>🍹 Sab 29: Dolce Vita </span>
+            <span class="badge badge-orange" style="margin-bottom:0;">Discoteca 3</span>
+          </div>
+          <textarea class="outfit-textarea" id="outfit_night_3" placeholder="Scrivi il tuo outfit per l'Aura Club..." oninput="saveOutfit(this.id)"></textarea>
+        </div>
+
+        <!-- Serata 4 -->
+        <div class="outfit-block">
+          <div class="outfit-title">
+            <span>🌆 Dom 30: Zante Town / Libera</span>
+            <span class="badge badge-blue" style="margin-bottom:0;">Serata Libera 1</span>
+          </div>
+          <textarea class="outfit-textarea" id="outfit_night_4" placeholder="Scrivi il tuo outfit per Piazza Solomos / Centro..." oninput="saveOutfit(this.id)"></textarea>
+        </div>
+
+        <!-- Serata 5 -->
+        <div class="outfit-block">
+          <div class="outfit-title">
+            <span>🥙 Lun 31: Cena Greca / Laganas</span>
+            <span class="badge badge-blue" style="margin-bottom:0;">Serata Libera 2</span>
+          </div>
+          <textarea class="outfit-textarea" id="outfit_night_5" placeholder="Scrivi il tuo outfit per la cena tradizionale a Tsilivi / Laganas..." oninput="saveOutfit(this.id)"></textarea>
+        </div>
+
+        <!-- Serata 6 -->
+        <div class="outfit-block">
+          <div class="outfit-title">
+            <span>⚪ Mar 01: White Party</span>
+            <span class="badge badge-orange" style="margin-bottom:0;">Discoteca 4</span>
+          </div>
+          <textarea class="outfit-textarea" id="outfit_night_6" placeholder="Scrivi il tuo total white outfit..." oninput="saveOutfit(this.id)"></textarea>
+        </div>
+      </div>
+
+      <!-- Pianificatore Outfit Giorno / Mare -->
+      <div class="card">
+        <div class="card-header-tag">🏖️ Outfit Giorno & Mare</div>
+        <div class="card-title">Costumi, Teli & Beachwear</div>
+        
+        <div class="outfit-block">
+          <div class="outfit-title">👙 Costumi da Bagno </div>
+          <textarea class="outfit-textarea" id="outfit_beach_costumi" placeholder="Es: Costume nero per Xigia (zolfo), costume azzurro, boxer mare..." oninput="saveOutfit(this.id)"></textarea>
+        </div>
+
+        <div class="outfit-block">
+          <div class="outfit-title">👕 T-shirt, Canotte & Pantaloncini Giorno</div>
+          <textarea class="outfit-textarea" id="outfit_beach_giorno" placeholder="Es: 4 magliette basic, 2 pantaloncini lino, occhiali da sole..." oninput="saveOutfit(this.id)"></textarea>
+        </div>
+      </div>
+
+      <!-- Scarpe e Calzature -->
+      <div class="card">
+        <div class="card-header-tag">👟 Calzature</div>
+        <div class="card-title">Scarpe, Sandali & Ciabatte</div>
+        
+        <div class="outfit-block">
+          <div class="outfit-title">👞 Scarpe / Sandali / Pantofole</div>
+          <textarea class="outfit-textarea" id="outfit_shoes_sera" placeholder="Es: Sneaker bianche, mocassini/scarpe eleganti per venerdì..." oninput="saveOutfit(this.id)"></textarea>
+        </div>
       </div>
 
     </section>
@@ -799,14 +1106,14 @@
         
         <div class="timeline-node">
           <div class="node-title">📍 Consegna (Delivery)</div>
-          <div class="node-desc"><b>Gio 27 Ago ore 16:45</b> • Aeroporto di Zante (ZTH)<br>
-          <i>(Volo EJU4171 atterra alle 16:35)</i></div>
+          <div class="node-desc"><b>Gio 27 Ago</b> • Aeroporto di Zante (ZTH)<br>
+          <i>(Primo arrivo alle 12:30 • Secondo arrivo alle 16:35)</i></div>
         </div>
 
         <div class="timeline-node" style="border-left-color: var(--sunset-coral);">
           <div class="node-title">📍 Riconsegna (Redelivery)</div>
           <div class="node-desc"><b>Mer 02 Set ore 12:30</b> • Aeroporto di Zante (ZTH)<br>
-          <i>(Consigliato 2h prima: volo di ritorno decolla alle 14:25)</i></div>
+          <i>(Consigliato 2h prima: voli di ritorno alle 14:25 e 15:15)</i></div>
         </div>
       </div>
 
@@ -961,10 +1268,138 @@
 
     <!-- SEZIONE CIBO -->
     <section id="food" class="tab-content">
+
+      <!-- Zona: Laganas & Kalamaki -->
+      <div class="card">
+        <div class="card-header-tag">📍 ZONA LAGANAS & KALAMAKI</div>
+        <div class="card-title">Street Food & Ristoranti</div>
+
+        <!-- Anima Restaurant -->
+        <div class="resto-card">
+          <div class="resto-header">
+            <div>
+              <div class="resto-name">Anima Restaurant</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Laganas • Ristorante & Cucina Mediterranea</div>
+            </div>
+            <span class="badge badge-price">15 - 30 €</span>
+          </div>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <a href="https://www.google.com/maps/search/?api=1&query=Anima+Restaurant+Laganas+Zakynthos" target="_blank" class="btn-maps">📍 Apri su Maps</a>
+            <a href="https://www.seateros.com/app/anima-laganas" target="_blank" class="btn-maps" style="background: linear-gradient(135deg, var(--sunset-coral), var(--sunset-orange));">📖 Menu Digitale</a>
+          </div>
+          <img src="anima.jpeg" alt="Anima Restaurant Laganas" class="resto-img">
+        </div>
+
+        <!-- Boombox pasta place -->
+        <div class="resto-card">
+          <div class="resto-header">
+            <div>
+              <div class="resto-name">Boombox pasta place</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Laganas • Street Food Pasta & Fast Casual</div>
+            </div>
+            <span class="badge badge-price">5 - 10 €</span>
+          </div>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <a href="https://www.google.com/maps/search/?api=1&query=Boombox+pasta+place+Laganas+Zakynthos" target="_blank" class="btn-maps">📍 Apri su Maps</a>
+            <a href="https://boombox.bfwqr.com/Home/Best%20Seller%20Sauce" target="_blank" class="btn-maps" style="background: linear-gradient(135deg, var(--sunset-coral), var(--sunset-orange));">📖 Menu Digitale</a>
+          </div>
+          <img src="boombox.png" alt="Boombox Pasta Place Laganas" class="resto-img">
+        </div>
+
+        <!-- Jhonny's pita -->
+        <div class="resto-card">
+          <div class="resto-header">
+            <div>
+              <div class="resto-name">Jhonny's pita</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Laganas • Pita Gyros & Souvlaki Tradizionale</div>
+            </div>
+            <span class="badge badge-price">5 - 10 €</span>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Jhonnys+pita+Laganas+Zakynthos" target="_blank" class="btn-maps">📍 Apri su Maps</a>
+          <img src="jhonnys-pita.jpg" alt="Jhonny's Pita Laganas" class="resto-img">
+          <img src="jhonnys-pita-2.png" alt="Jhonny's Pita Laganas" class="resto-img">
+        </div>
+
+        <!-- Kantina Kalamaki -->
+        <div class="resto-card">
+          <div class="resto-header">
+            <div>
+              <div class="resto-name">Kantina Kalamaki</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Laganas / Kalamaki • Street Food & Fast Grill</div>
+            </div>
+            <span class="badge badge-price">5 - 10 €</span>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Kantina+Kalamaki+Zakynthos" target="_blank" class="btn-maps">📍 Apri su Maps</a>
+          <img src="kantina-kalamaki.png" alt="Kantina Kalamaki" class="resto-img">
+        </div>
+      </div>
+
+      <!-- Zona: Tsilivi -->
+      <div class="card">
+        <div class="card-header-tag">📍 ZONA TSILIVI</div>
+        <div class="card-title">Cena Tradizionale nel Borgo</div>
+
+        <!-- Archontikon garden -->
+        <div class="resto-card">
+          <div class="resto-header">
+            <div>
+              <div class="resto-name">Archontikon garden</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Tsilivi • Giardino Tradizionale Greco</div>
+            </div>
+            <span class="badge badge-price">20 - 45 €</span>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Archontikon+garden+Tsilivi+Zakynthos" target="_blank" class="btn-maps">📍 Apri su Maps</a>
+          <img src="archontikon-garden.jpg" alt="Archontikon Garden Tsilivi" class="resto-img">
+        </div>
+      </div>
+
+      <!-- Zona: Keri / Mizithres -->
+      <div class="card">
+        <div class="card-header-tag">📍 ZONA KERI & MIZITHRES</div>
+        <div class="card-title">Vista Panoramica & Tramonto</div>
+
+        <!-- Keri Lighthouse -->
+        <div class="resto-card">
+          <div class="resto-header">
+            <div>
+              <div class="resto-name">Keri Lighthouse</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Mizithres • Vista Faraglioni al Tramonto</div>
+            </div>
+            <span class="badge badge-price">30-50€</span>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Keri+Lighthouse+Restaurant+Zakynthos" target="_blank" class="btn-maps">📍 Apri su Maps</a>
+          <img src="keri-1.png" alt="Keri Lighthouse Restaurant Mizithres" class="resto-img">
+          <img src="keri-2.png" alt="Keri Lighthouse Restaurant Mizithres" class="resto-img">
+          <img src="keri-3.png" alt="Keri Lighthouse Restaurant Mizithres" class="resto-img">
+        </div>
+
+        <!-- Lighthouse Bar (Alternativa Economica) -->
+        <div class="resto-card" style="border-left: 4px solid var(--sunset-orange);">
+          <div class="resto-header">
+            <div>
+              <div class="resto-name">Lighthouse Bar (Bar Panoramico)</div>
+              <div style="font-size: 0.78rem; color: var(--text-muted);">Mizithres / Faro di Keri • Drink, Snack & Tramonto</div>
+            </div>
+            <span class="badge badge-price">15 - 25 €</span>
+          </div>
+          <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 6px;">
+            💡 <i>Alternativa più economica al ristorante per godersi cocktail, birre e la vista sui faraglioni al tramonto.</i>
+          </div>
+          <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+            <a href="https://maps.app.goo.gl/j56LrmGkujx6J2wH6" target="_blank" class="btn-maps">📍 Apri su Maps</a>
+            <a href="https://mizithres.com/menu/" target="_blank" class="btn-maps" style="background: linear-gradient(135deg, var(--sunset-coral), var(--sunset-orange));">📖 Menu Digitale</a>
+          </div>
+          <img src="keri-bar-1.png" alt="Lighthouse Bar Mizithres Keri" class="resto-img">
+          <img src="keri-bar-2.png" alt="Lighthouse Bar Mizithres Keri" class="resto-img">
+          <img src="keri-bar-3.png" alt="Lighthouse Bar Mizithres Keri" class="resto-img">
+        </div>
+      </div>
+
+      <!-- Box Animazione Humor & Memes Intatto -->
       <div class="card">
         <div class="card-header-tag">🍽️ Gastronomia & Ristoranti</div>
         <div class="card-title">Dove Mangiare a Zante</div>
-        <span class="badge badge-orange">🚧 Sezione in Lavorazione... the <b>frocest</b> non ha ancora svolto il suo lavoro</span>
+        <span class="badge badge-orange">🚧 The <b>frocest</b> ha svolto il suo lavoro</span>
 
         <!-- Animazione Duo Memes -->
         <div class="meme-container">
@@ -978,11 +1413,8 @@
             <img src="Soggetto.png" alt="Soggetto Meme" class="spring-meme delayed">
           </div>
         </div>
-
-        <div class="quote-box" style="text-align: center; margin-top: 14px;">
-          <p>🌯 <b>In arrivo:</b> Gyros Pita, Souvlaki tipico greco, Taverne di pesce fresco a Keri e migliori locali street food a Laganas!</p>
-        </div>
       </div>
+
     </section>
 
     <!-- GIORNO 1 -->
@@ -993,8 +1425,8 @@
 
         <div class="day-period">☀️ Pomeriggio</div>
         <div class="timeline-node">
-          <div class="node-title">Arrivo a Zante (Ore 16:35)</div>
-          <div class="node-desc">Atterraggio all'aeroporto di Zante con volo EJU4171.</div>
+          <div class="node-title">Arrivo a Zante</div>
+          <div class="node-desc">Atterraggio all'aeroporto di Zante per i rispettivi voli (primo arrivo 12:30, secondo arrivo 16:35).</div>
         </div>
 
         <div class="timeline-node">
@@ -1127,12 +1559,18 @@
         </div>
 
         <div class="timeline-node">
-          <div class="node-title">Escursione Faraglioni di Mizithres</div>
+          <div class="node-title">Escursione Faraglioni di Mizithres (PRENOTATA ✅)</div>
           <div class="node-desc">
             <span class="badge badge-price">Partenza 14:00 • 30€ • Durata 4h</span><br>
-            Escursione in barca ai faraglioni. Termine tour previsto per le ore 18:00.
+            Escursione in barca ai faraglioni. Termine tour previsto per le ore 18:00. Clicca qui sotto per aprire il voucher con QR code.
           </div>
-          <a href="https://maps.app.goo.gl/M82iFWdi5qKzA1Yp6" target="_blank" class="btn-maps">📍 Porto Partenza Maps</a>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <a href="conferma-prenotazione-mizithres.pdf" target="_blank" class="btn-pdf">📄 Apri Conferma Pagamento & QR Code PDF</a>
+            <a href="email-conferma-prenotazione.pdf" target="_blank" class="btn-pdf">📄 Apri Email Conferma, Info & QR Code PDF</a>
+          </div>
+          <div style="margin-top: 6px;">
+            <a href="https://maps.app.goo.gl/M82iFWdi5qKzA1Yp6" target="_blank" class="btn-maps">📍 Porto Partenza Maps</a>
+          </div>
           
           <div class="img-grid">
             <img src="escursione-mizithres-1.png" alt="Mizithres Barca 1">
@@ -1141,18 +1579,32 @@
           </div>
         </div>
 
-        <div class="day-period">🌅 Tramonto (Ore 19:57)</div>
+        <div class="day-period">🌅 Pomeriggio • Suddivisione Gruppo</div>
+        
+        <!-- Gruppo Partita Napoli -->
+        <div class="timeline-node" style="border-left-color: #0077b6; background: #f0f7ff;">
+          <div class="node-title">⚽ Gruppo Partita: Napoli vs Como</div>
+          <div class="node-desc">
+            <b>Fischio d'inizio ore 18:30</b> (ora italiana) / 19:30 greca.<br>
+            Chi segue la partita si sposta subito dopo la barca nei pub/sport bar di Laganas (es. <i>Cheers Bar</i> o <i>Rescue Sports Bar</i>) per vedere il Napoli.
+          </div>
+          <img src="napoli-como.jpeg" alt="Napoli Como" class="nap-img" style="width: 100%; max-height: 140px; object-fit: cover; border-radius: 10px; margin-top: 8px; display: block; border: 1px solid #dce8f0;">
+        </div>
+
+        <!-- Gruppo Faraglioni al Tramonto -->
         <div class="timeline-node" style="border-left-color: var(--sunset-coral);">
-          <div class="node-title">Faraglioni dall'alto al Tramonto</div>
-          <div class="node-desc">Dal porto ai faraglioni (Myzithres) circa 30 min in auto + breve camminata a piedi. Tramonto alle <b>19:57</b>.</div>
+          <div class="node-title">🌅 Gruppo Tramonto: Faraglioni dall'alto</div>
+          <div class="node-desc">
+            Dal porto ai faraglioni (Myzithres) circa 30 min in auto + breve camminata a piedi. Tramonto alle <b>19:57</b>.
+          </div>
           <a href="https://www.google.com/maps/search/?api=1&query=Mizithres+Viewpoint+Keri+Zakynthos" target="_blank" class="btn-maps">📍 Viewpoint Mizithres Maps</a>
           <img src="mizithres-tramonto.jpg" alt="Faraglioni Mizithres al Tramonto" class="place-img">
         </div>
 
         <div class="day-period">🌙 Sera</div>
         <div class="timeline-node">
-          <div class="node-title">Preparazione & Zante Town</div>
-          <div class="node-desc">Visita a Zante Town (parcheggio comodo al porto molo grande) per aperitivo in Piazza Solomos; ritrovo notturno a Laganas.</div>
+          <div class="node-title">Zante Town</div>
+          <div class="node-desc">Ritrovo generale e visita a Zante Town (parcheggio comodo al molo grande) per aperitivo in Piazza Solomos; poi ritrovo notturno a Laganas.</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Solomos+Square+Zante+Town" target="_blank" class="btn-maps">📍 Zante Town Maps</a>
           <img src="zante-town-night.jpg" alt="Zante Town di Notte" class="place-img">
         </div>
@@ -1272,8 +1724,8 @@
         </div>
 
         <div class="timeline-node" style="border-left-color: var(--sunset-coral);">
-          <div class="node-title">Volo di Ritorno FR3380 (Ore 14:25 ➔ 15:00)</div>
-          <div class="node-desc">Decollo alle ore 14:25 dall'Aeroporto di Zacinto (ZTH) verso Napoli (NAP).</div>
+          <div class="node-title">Voli di Ritorno (ZTH ➔ NAP)</div>
+          <div class="node-desc">Decolli dall'Aeroporto di Zacinto (ZTH) verso Napoli (NAP) alle ore 14:25 (Gruppo 1) e alle ore 15:15 (Gruppo 2).</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Zakynthos+Airport+Dionysios+Solomos" target="_blank" class="btn-maps">📍 Aeroporto ZTH Maps</a>
         </div>
       </div>
@@ -1298,7 +1750,7 @@
       }
       
       const navButtons = document.querySelectorAll('.nav-pill');
-      const tabs = ['home', 'cars', 'food', 'day1', 'day2', 'day3', 'day4', 'day5', 'day6', 'day7'];
+      const tabs = ['home', 'valigia', 'cars', 'food', 'day1', 'day2', 'day3', 'day4', 'day5', 'day6', 'day7'];
       const index = tabs.indexOf(tabId);
       if (index !== -1 && navButtons[index]) {
         navButtons[index].classList.add('active');
@@ -1347,7 +1799,7 @@
       document.getElementById('imageModal').classList.remove('active');
     }
 
-    const targetDeparture = new Date('2026-08-27T14:10:00+02:00').getTime();
+    const targetDeparture = new Date('2026-08-27T10:00:00+02:00').getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -1375,35 +1827,33 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
+    /* Checklist Fondamentali */
     const initialChecklist = [
-      { text: "Patente fisica (per noleggio auto)", checked: false },
-      { text: "Documenti / Carta d'identità", checked: false },
-      { text: "Contanti (per saldo noleggio)", checked: false },
-      { text: "Outfit Elegante (Venerdì 28)", checked: false },
-      { text: "Outfit Total White (Martedì 1)", checked: false },
-      { text: "Scarpe da scoglio (Porto Limnionas)", checked: false },
-      { text: "Scarpe comode (Sentiero tramonto Mizithres)", checked: false },
-      { text: "Costume scuro/vecchio (Zolfo Xigia Beach)", checked: false },
-      { text: "Maschera e boccaglio snorkeling", checked: false },
-      { text: "Sacca impermeabile / cover telefono", checked: false },
-      { text: "Crema solare & Doposole", checked: false },
-      { text: "Felpa leggera per la barca", checked: false },
-      { text: "Powerbank & Cavi ricarica", checked: false }
+      { text: "Patente fisica (obbligatoria per guidare le auto)", checked: false },
+      { text: "Carta d'identità / Passaporto valido per l'espatrio", checked: false },
+      { text: "Contanti (per saldo noleggio auto e spese locali)", checked: false },
+      { text: "Scarpe da scoglio (indispensabili per Limnionas e rocce)", checked: false },
+      { text: "Scarpe da ginnastica per camminata tramonto Faraglioni", checked: false },
+      { text: "Costume vecchio/scuro (per le acque con zolfo a Xigia Beach)", checked: false },
+      { text: "Maschera da sub / occhialini snorkeling", checked: false },
+      { text: "Crema solare protezione alta & Doposole", checked: false },
+      { text: "Powerbank e caricatore con cavetto di ricarica", checked: false }
     ];
 
     function getChecklist() {
-      const saved = localStorage.getItem('zante_checklist_v2');
+      const saved = localStorage.getItem('zante_checklist_v3');
       return saved ? JSON.parse(saved) : initialChecklist;
     }
 
     function saveAndRender(items) {
-      localStorage.setItem('zante_checklist_v2', JSON.stringify(items));
+      localStorage.setItem('zante_checklist_v3', JSON.stringify(items));
       renderChecklist();
     }
 
     function renderChecklist() {
       const items = getChecklist();
       const container = document.getElementById('checklistContainer');
+      if (!container) return;
       container.innerHTML = '';
 
       items.forEach((item, index) => {
@@ -1444,7 +1894,34 @@
       saveAndRender(items);
     }
 
+    /* Salvataggio Memoria Outfit (LocalStorage) */
+    const outfitFields = [
+      'outfit_night_1', 'outfit_night_2', 'outfit_night_3', 
+      'outfit_night_4', 'outfit_night_5', 'outfit_night_6',
+      'outfit_beach_costumi', 'outfit_beach_giorno', 'outfit_shoes_sera'
+    ];
+
+    function saveOutfit(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        localStorage.setItem('zante_' + id, el.value);
+      }
+    }
+
+    function loadOutfits() {
+      outfitFields.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const saved = localStorage.getItem('zante_' + id);
+          if (saved !== null) {
+            el.value = saved;
+          }
+        }
+      });
+    }
+
     renderChecklist();
+    loadOutfits();
     initImageModal();
     autoSelectCurrentDay();
 
