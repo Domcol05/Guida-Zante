@@ -42,7 +42,6 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      -webkit-tap-highlight-color: transparent;
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
@@ -105,6 +104,7 @@
       gap: 6px;
       cursor: pointer;
       transition: all 0.25s ease;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .nav-pill.active {
@@ -256,10 +256,19 @@
       border-color: #023e8a;
     }
 
+    /* Regole di sblocco native Copy-Paste per WebKit Standalone PWA */
+    input, textarea, .outfit-textarea, .checklist-input {
+      -webkit-user-select: text !important;
+      user-select: text !important;
+      -webkit-touch-callout: default !important;
+      -webkit-user-modify: read-write-plaintext-only;
+    }
+
     /* Media & Immagini Cliccabili */
     .flight-img, .place-img, .img-grid img, .resto-img, .nap-img {
       cursor: pointer;
       transition: opacity 0.2s ease, transform 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .flight-img:active, .place-img:active, .img-grid img:active, .resto-img:active, .nap-img:active {
@@ -376,6 +385,7 @@
       border-radius: 999px;
       margin-top: 8px;
       box-shadow: 0 2px 8px rgba(0, 150, 199, 0.25);
+      -webkit-tap-highlight-color: transparent;
     }
     .btn-maps:active {
       transform: scale(0.97);
@@ -395,6 +405,7 @@
       margin-top: 10px;
       box-shadow: 0 3px 12px rgba(217, 4, 41, 0.28);
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
     .btn-pdf:active {
       transform: scale(0.97);
@@ -414,6 +425,7 @@
       box-shadow: 0 3px 10px rgba(37, 211, 102, 0.3);
       margin-right: 6px;
       margin-top: 6px;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .btn-call {
@@ -429,6 +441,7 @@
       border-radius: 999px;
       box-shadow: 0 3px 10px rgba(2, 62, 138, 0.25);
       margin-top: 6px;
+      -webkit-tap-highlight-color: transparent;
     }
 
     /* Driver List Box */
@@ -611,6 +624,7 @@
       transform-origin: bottom center;
       animation: springBounce 2.2s infinite cubic-bezier(0.28, 0.84, 0.42, 1);
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .spring-meme.delayed {
@@ -687,6 +701,7 @@
       border-radius: 12px;
       cursor: pointer;
       font-size: 1.1rem;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .check-item {
@@ -708,6 +723,7 @@
       cursor: pointer;
       flex: 1;
       font-weight: 500;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .check-label input[type="checkbox"] {
@@ -728,6 +744,7 @@
       font-size: 1.1rem;
       cursor: pointer;
       padding: 2px 6px;
+      -webkit-tap-highlight-color: transparent;
     }
 
     /* Modal / Lightbox */
@@ -775,6 +792,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      -webkit-tap-highlight-color: transparent;
     }
   </style>
 </head>
@@ -1014,7 +1032,7 @@
             <span>🇮🇹 Gio 27: Made in Italy</span>
             <span class="badge badge-orange" style="margin-bottom:0;">Discoteca 1</span>
           </div>
-          <textarea class="outfit-textarea" id="outfit_night_1" placeholder="Scrivi il tuo outfit per la serata Made in Italy..." oninput="saveOutfit(this.id)"></textarea>
+          <textarea class="outfit-textarea" id="outfit_night_1" placeholder="Scrivi il tuo outfit per la serata Made in Italy..." oninput="saveOutfit(this.id)" onchange="saveOutfit(this.id)" onpaste="setTimeout(() => saveOutfit(this.id), 50)"></textarea>
         </div>
 
         <!-- Serata 2 -->
@@ -1023,7 +1041,7 @@
             <span>👔 Ven 28: Elegant Party</span>
             <span class="badge badge-orange" style="margin-bottom:0;">Discoteca 2</span>
           </div>
-          <textarea class="outfit-textarea" id="outfit_night_2" placeholder="Scrivi il tuo outfit elegante..." oninput="saveOutfit(this.id)"></textarea>
+          <textarea class="outfit-textarea" id="outfit_night_2" placeholder="Scrivi il tuo outfit elegante..." oninput="saveOutfit(this.id)" onchange="saveOutfit(this.id)" onpaste="setTimeout(() => saveOutfit(this.id), 50)"></textarea>
         </div>
 
         <!-- Serata 3 -->
@@ -1032,7 +1050,7 @@
             <span>🍹 Sab 29: Dolce Vita </span>
             <span class="badge badge-orange" style="margin-bottom:0;">Discoteca 3</span>
           </div>
-          <textarea class="outfit-textarea" id="outfit_night_3" placeholder="Scrivi il tuo outfit per l'Aura Club..." oninput="saveOutfit(this.id)"></textarea>
+          <textarea class="outfit-textarea" id="outfit_night_3" placeholder="Scrivi il tuo outfit per l'Aura Club..." oninput="saveOutfit(this.id)" onchange="saveOutfit(this.id)" onpaste="setTimeout(() => saveOutfit(this.id), 50)"></textarea>
         </div>
 
         <!-- Serata 4 -->
@@ -1041,7 +1059,7 @@
             <span>🌆 Dom 30: Zante Town / Libera</span>
             <span class="badge badge-blue" style="margin-bottom:0;">Serata Libera 1</span>
           </div>
-          <textarea class="outfit-textarea" id="outfit_night_4" placeholder="Scrivi il tuo outfit per Piazza Solomos / Centro..." oninput="saveOutfit(this.id)"></textarea>
+          <textarea class="outfit-textarea" id="outfit_night_4" placeholder="Scrivi il tuo outfit per Piazza Solomos / Centro..." oninput="saveOutfit(this.id)" onchange="saveOutfit(this.id)" onpaste="setTimeout(() => saveOutfit(this.id), 50)"></textarea>
         </div>
 
         <!-- Serata 5 -->
@@ -1050,7 +1068,7 @@
             <span>🥙 Lun 31: Cena Greca / Laganas</span>
             <span class="badge badge-blue" style="margin-bottom:0;">Serata Libera 2</span>
           </div>
-          <textarea class="outfit-textarea" id="outfit_night_5" placeholder="Scrivi il tuo outfit per la cena tradizionale a Tsilivi / Laganas..." oninput="saveOutfit(this.id)"></textarea>
+          <textarea class="outfit-textarea" id="outfit_night_5" placeholder="Scrivi il tuo outfit per la cena tradizionale a Tsilivi / Laganas..." oninput="saveOutfit(this.id)" onchange="saveOutfit(this.id)" onpaste="setTimeout(() => saveOutfit(this.id), 50)"></textarea>
         </div>
 
         <!-- Serata 6 -->
@@ -1059,7 +1077,7 @@
             <span>⚪ Mar 01: White Party</span>
             <span class="badge badge-orange" style="margin-bottom:0;">Discoteca 4</span>
           </div>
-          <textarea class="outfit-textarea" id="outfit_night_6" placeholder="Scrivi il tuo total white outfit..." oninput="saveOutfit(this.id)"></textarea>
+          <textarea class="outfit-textarea" id="outfit_night_6" placeholder="Scrivi il tuo total white outfit..." oninput="saveOutfit(this.id)" onchange="saveOutfit(this.id)" onpaste="setTimeout(() => saveOutfit(this.id), 50)"></textarea>
         </div>
       </div>
 
@@ -1070,12 +1088,12 @@
         
         <div class="outfit-block">
           <div class="outfit-title">👙 Costumi da Bagno </div>
-          <textarea class="outfit-textarea" id="outfit_beach_costumi" placeholder="Es: Costume nero per Xigia (zolfo), costume azzurro, boxer mare..." oninput="saveOutfit(this.id)"></textarea>
+          <textarea class="outfit-textarea" id="outfit_beach_costumi" placeholder="Es: Costume nero per Xigia (zolfo), costume azzurro, boxer mare..." oninput="saveOutfit(this.id)" onchange="saveOutfit(this.id)" onpaste="setTimeout(() => saveOutfit(this.id), 50)"></textarea>
         </div>
 
         <div class="outfit-block">
           <div class="outfit-title">👕 T-shirt, Canotte & Pantaloncini Giorno</div>
-          <textarea class="outfit-textarea" id="outfit_beach_giorno" placeholder="Es: 4 magliette basic, 2 pantaloncini lino, occhiali da sole..." oninput="saveOutfit(this.id)"></textarea>
+          <textarea class="outfit-textarea" id="outfit_beach_giorno" placeholder="Es: 4 magliette basic, 2 pantaloncini lino, occhiali da sole..." oninput="saveOutfit(this.id)" onchange="saveOutfit(this.id)" onpaste="setTimeout(() => saveOutfit(this.id), 50)"></textarea>
         </div>
       </div>
 
@@ -1086,7 +1104,7 @@
         
         <div class="outfit-block">
           <div class="outfit-title">👞 Scarpe / Sandali / Pantofole</div>
-          <textarea class="outfit-textarea" id="outfit_shoes_sera" placeholder="Es: Sneaker bianche, mocassini/scarpe eleganti per venerdì..." oninput="saveOutfit(this.id)"></textarea>
+          <textarea class="outfit-textarea" id="outfit_shoes_sera" placeholder="Es: Sneaker bianche, mocassini/scarpe eleganti per venerdì..." oninput="saveOutfit(this.id)" onchange="saveOutfit(this.id)" onpaste="setTimeout(() => saveOutfit(this.id), 50)"></textarea>
         </div>
       </div>
 
@@ -1431,20 +1449,20 @@
 
         <div class="timeline-node">
           <div class="node-title">Ritiro Macchina & Spesa</div>
-          <div class="node-desc">Ritiro delle auto a noleggio, sistemazione presso Paradise Apartments e spesa iniziale (consigliati <i>AB Vassilopoulos</i> o <i>Lidl</i> per risparmiare rispetto ai minimarket turistici).</div>
+          <div class="node-desc">Ritiro delle auto a noleggio, sistemazione presso Paradise Apartments e spesa iniziale (consigliati <i>AB Vassilopoulos</i> o <i>Lidl</i> per risparmiare rispetto ai minimarket turistici)[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Paradise+Apartments+Laganas" target="_blank" class="btn-maps">📍 Paradise Apartments Maps</a>
         </div>
 
         <div class="day-period">🌙 Sera</div>
         <div class="timeline-node">
           <div class="node-title">Giro a Laganas + Cena</div>
-          <div class="node-desc">Prima passeggiata e cena nei locali di Laganas.</div>
+          <div class="node-desc">Prima passeggiata e cena nei locali di Laganas[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Laganas+Main+Road+Zakynthos" target="_blank" class="btn-maps">📍 Laganas Maps</a>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Serata Made in Italy</div>
-          <div class="node-desc">Festa e prima serata a tema nei club di Laganas (~15€ - 20€ ingresso con drink).</div>
+          <div class="node-desc">Festa e prima serata a tema nei club di Laganas (~15€ - 20€ ingresso con drink)[cite: 2].</div>
           <img src="made-in-italy.png" alt="Made in Italy" class="place-img">
         </div>
       </div>
@@ -1459,12 +1477,12 @@
         <div class="day-period">☀️ Mattina & Pomeriggio</div>
         <div class="timeline-node">
           <div class="node-title">Sveglia presto ore 10:00</div>
-          <div class="node-desc">Preparazione per la giornata di mare e sport acquatici.</div>
+          <div class="node-desc">Preparazione per la giornata di mare e sport acquatici[cite: 2].</div>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Banana Beach / Watersport</div>
-          <div class="node-desc">Spiaggia per le attrazioni d'acqua e giochi (lido attrezzato 20€-30€ / set ombrellone). Rientro verso le 16:30.</div>
+          <div class="node-desc">Spiaggia per le attrazioni d'acqua e giochi (lido attrezzato 20€-30€ / set ombrellone). Rientro verso le 16:30[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Banana+Beach+Zakynthos" target="_blank" class="btn-maps">📍 Banana Beach Maps</a>
           
           <div class="img-grid">
@@ -1475,7 +1493,7 @@
 
         <div class="timeline-node" style="border-left-color: var(--sunset-orange);">
           <div class="node-title">ALTERNATIVA: St Nicholas Beach</div>
-          <div class="node-desc">St Nicholas Beach / Watersport PROMO / Chiesa sulla scogliera panoramica con parcheggio comodo.</div>
+          <div class="node-desc">St Nicholas Beach / Watersport PROMO / Chiesa sulla scogliera panoramica con parcheggio comodo[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=St+Nicholas+Beach+Vasilikos+Zakynthos" target="_blank" class="btn-maps">📍 St Nicholas Beach Maps</a>
           
           <div class="img-grid">
@@ -1488,14 +1506,14 @@
         <div class="day-period">🌙 Sera</div>
         <div class="timeline-node">
           <div class="node-title">Ore 19:00 già vestiti (Eleganti)</div>
-          <div class="node-desc">Cena suggestiva al tramonto con vista sui faraglioni di Mizithres / Keri. Arrivare entro le 19:15 per parcheggiare facilmente.</div>
+          <div class="node-desc">Cena suggestiva al tramonto con vista sui faraglioni di Mizithres / Keri. Arrivare entro le 19:15 per parcheggiare facilmente[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Keri+Lighthouse+Mizithres+Zakynthos" target="_blank" class="btn-maps">📍 Faraglioni / Keri Maps</a>
           <img src="keri-lighthouse.jpg" alt="Keri Lighthouse Tramonto" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Elegant Party</div>
-          <div class="node-desc">Serata elegante dopo cena.</div>
+          <div class="node-desc">Serata elegante dopo cena[cite: 2].</div>
           <img src="elegant-party.jpg" alt="Elegant Party" class="place-img">
         </div>
       </div>
@@ -1510,19 +1528,19 @@
         <div class="day-period">☀️ Mattina & Pomeriggio</div>
         <div class="timeline-node">
           <div class="node-title">Sveglia ore 9:00 ➔ Cameo Island</div>
-          <div class="node-desc">Mattinata all'iconica Cameo Island (~5€ ingresso con portachiavi ricordo o drink). Segue pranzo veloce a Laganas.</div>
+          <div class="node-desc">Mattinata all'iconica Cameo Island (~5€ ingresso con portachiavi ricordo o drink). Segue pranzo veloce a Laganas[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Cameo+Island+Zakynthos" target="_blank" class="btn-maps">📍 Cameo Island Maps</a>
           <img src="cameo-island.jpg" alt="Cameo Island" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Ore 14:30 ➔ Porto Zoro (Porto Azzurro)</div>
-          <div class="node-desc">Da Laganas a Porto Zoro: 19 km (~35 min). Lido attrezzato e fanghi d'argilla naturali sugli scogli a fine spiaggia.</div>
+          <div class="node-desc">Da Laganas a Porto Zoro: 19 km (~35 min). Lido attrezzato e fanghi d'argilla naturali sugli scogli a fine spiaggia[cite: 2].</div>
           <div class="quote-box">
-            <p>• <i>"I prezzi per un ombrellone è di 30 Euro per le prime 2 file e 20 Euro per le altre"</i></p>
-            <p>• <i>"Prima fila, lettini luxury 30€ per tutta la giornata"</i></p>
-            <p>• <i>"Costo degli ombrelloni su spiaggia 25 euro, 15 per quelli sull’erba"</i></p>
-            <p>• <i>"Lato sx sdraio normali a 20€ mentre i lettini più comodi sul lato dx costano 30€ (coppia di lettini e ombrellone)"</i></p>
+            <p>• <i>"I prezzi per un ombrellone è di 30 Euro per le prime 2 file e 20 Euro per le altre"</i>[cite: 2]</p>
+            <p>• <i>"Prima fila, lettini luxury 30€ per tutta la giornata"</i>[cite: 2]</p>
+            <p>• <i>"Costo degli ombrelloni su spiaggia 25 euro, 15 per quelli sull’erba"</i>[cite: 2]</p>
+            <p>• <i>"Lato sx sdraio normali a 20€ mentre i lettini più comodi sul lato dx costano 30€ (coppia di lettini e ombrellone)"</i>[cite: 2]</p>
           </div>
           <a href="https://www.google.com/maps/search/?api=1&query=Porto+Zoro+Beach+Porto+Azzurro+Zakynthos" target="_blank" class="btn-maps">📍 Porto Zoro Maps</a>
           
@@ -1538,7 +1556,7 @@
           <div class="node-title">Dolce Vita @ Aura Club Laganas</div>
           <div class="node-desc">
             <span class="badge badge-price">Inizio 23:30 • 16,50€ (1 drink incluso)</span><br>
-            Serata clubbing al Dolce Vita / Aura Club (cocktail extra ~7€-10€).
+            Serata clubbing al Dolce Vita / Aura Club (cocktail extra ~7€-10€)[cite: 2].
           </div>
           <a href="https://www.google.com/maps/search/?api=1&query=Aura+Club+Laganas+Zakynthos" target="_blank" class="btn-maps">📍 Aura Club Maps</a>
           <img src="aura-club.jpg" alt="Dolce Vita Aura Club" class="place-img">
@@ -1555,14 +1573,14 @@
         <div class="day-period">☀️ Mattina & Pomeriggio</div>
         <div class="timeline-node">
           <div class="node-title">Sveglia 11:00 & Preparazione Pranzo</div>
-          <div class="node-desc">Spesa e pranzo. Alle 13:30 bisogna aver raggiunto il porto per partire alle 14:00. Portare scarpe da scoglio e maschere.</div>
+          <div class="node-desc">Spesa e pranzo. Alle 13:30 bisogna aver raggiunto il porto per partire alle 14:00. Portare scarpe da scoglio e maschere[cite: 2].</div>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Escursione Faraglioni di Mizithres (PRENOTATA ✅)</div>
           <div class="node-desc">
             <span class="badge badge-price">Partenza 14:00 • 30€ • Durata 4h</span><br>
-            Escursione in barca ai faraglioni. Termine tour previsto per le ore 18:00. Clicca qui sotto per aprire il voucher con QR code.
+            Escursione in barca ai faraglioni. Termine tour previsto per le ore 18:00[cite: 2]. Clicca qui sotto per aprire il voucher con QR code.
           </div>
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <a href="conferma-prenotazione-mizithres.pdf" target="_blank" class="btn-pdf">📄 Apri Conferma Pagamento & QR Code PDF</a>
@@ -1595,7 +1613,7 @@
         <div class="timeline-node" style="border-left-color: var(--sunset-coral);">
           <div class="node-title">🌅 Gruppo Tramonto: Faraglioni dall'alto</div>
           <div class="node-desc">
-            Dal porto ai faraglioni (Myzithres) circa 30 min in auto + breve camminata a piedi. Tramonto alle <b>19:57</b>.
+            Dal porto ai faraglioni (Myzithres) circa 30 min in auto + breve camminata a piedi. Tramonto alle <b>19:57</b>[cite: 2].
           </div>
           <a href="https://www.google.com/maps/search/?api=1&query=Mizithres+Viewpoint+Keri+Zakynthos" target="_blank" class="btn-maps">📍 Viewpoint Mizithres Maps</a>
           <img src="mizithres-tramonto.jpg" alt="Faraglioni Mizithres al Tramonto" class="place-img">
@@ -1604,7 +1622,7 @@
         <div class="day-period">🌙 Sera</div>
         <div class="timeline-node">
           <div class="node-title">Zante Town</div>
-          <div class="node-desc">Ritrovo generale e visita a Zante Town (parcheggio comodo al molo grande) per aperitivo in Piazza Solomos; poi ritrovo notturno a Laganas.</div>
+          <div class="node-desc">Ritrovo generale e visita a Zante Town (parcheggio comodo al molo grande) per aperitivo in Piazza Solomos; poi ritrovo notturno a Laganas[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Solomos+Square+Zante+Town" target="_blank" class="btn-maps">📍 Zante Town Maps</a>
           <img src="zante-town-night.jpg" alt="Zante Town di Notte" class="place-img">
         </div>
@@ -1620,19 +1638,19 @@
         <div class="day-period">☀️ Mattina & Pomeriggio</div>
         <div class="timeline-node">
           <div class="node-title">Sveglia ore 9:00 (giornata lunghissima)</div>
-          <div class="node-desc">Preparazione veloce per iniziare il tour completo della costa ovest.</div>
+          <div class="node-desc">Preparazione veloce per iniziare il tour completo della costa ovest[cite: 2].</div>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">1. Spiaggia del Relitto dall'alto</div>
-          <div class="node-desc">Terrazza panoramica affacciata su Navagio Beach (passerella a ingresso libero).</div>
+          <div class="node-desc">Terrazza panoramica affacciata su Navagio Beach (passerella a ingresso libero)[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Navagio+Beach+Viewpoint+Zakynthos" target="_blank" class="btn-maps">📍 Relitto dall'alto Maps</a>
           <img src="navagio-viewpoint.webp" alt="Spiaggia del Relitto dall'alto" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">2. Porto Roxa</div>
-          <div class="node-desc">Spostamento in auto verso la baia di Porto Roxa. Trampolino per tuffi e letti a dondolo gratuiti con consumazione al bar.</div>
+          <div class="node-desc">Spostamento in auto verso la baia di Porto Roxa. Trampolino per tuffi e letti a dondolo gratuiti con consumazione al bar[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Porto+Roxa+Zakynthos" target="_blank" class="btn-maps">📍 Porto Roxa Maps</a>
           <img src="porto-roxa-1.jpg" alt="Porto Roxa 1" class="place-img">
           <img src="porto-roxa-2.jpg" alt="Porto Roxa 2" class="place-img">
@@ -1640,7 +1658,7 @@
 
         <div class="timeline-node">
           <div class="node-title">3. Porto Limnionas</div>
-          <div class="node-desc">Fiordo naturale spettacolare con acqua cristallina. Ingresso da roccia: <b>scarpe da scoglio indispensabili</b>.</div>
+          <div class="node-desc">Fiordo naturale spettacolare con acqua cristallina. Ingresso da roccia: <b>scarpe da scoglio indispensabili</b>[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Porto+Limnionas+Zakynthos" target="_blank" class="btn-maps">📍 Porto Limnionas Maps</a>
           <img src="porto-limionas.avif" alt="Porto Limnionas" class="place-img">
         </div>
@@ -1648,13 +1666,13 @@
         <div class="day-period">🌙 Sera</div>
         <div class="timeline-node">
           <div class="node-title">Cena Greca (Souvlaki)</div>
-          <div class="node-desc">Cena tradizionale greca con spiedini di carne, souvlaki e gyros pita (~12€ - 18€ a testa).</div>
+          <div class="node-desc">Cena tradizionale greca con spiedini di carne, souvlaki e gyros pita (~12€ - 18€ a testa)[cite: 2].</div>
           <img src="cena-souvlaki.jpeg" alt="Cena Greca Souvlaki" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Serata Bar Laganas oppure Borgo Greco (Tsilivi)</div>
-          <div class="node-desc">Drink nei bar di Laganas o serata tranquilla nel borgo di Tsilivi.</div>
+          <div class="node-desc">Drink nei bar di Laganas o serata tranquilla nel borgo di Tsilivi[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Tsilivi+Zakynthos" target="_blank" class="btn-maps">📍 Tsilivi Maps</a>
         </div>
       </div>
@@ -1669,26 +1687,26 @@
         <div class="day-period">☀️ Mattina & Pomeriggio</div>
         <div class="timeline-node">
           <div class="node-title">Sveglia presto ore 10:00</div>
-          <div class="node-desc">Partenza in auto verso la costa nord-est (circa 37 min).</div>
+          <div class="node-desc">Partenza in auto verso la costa nord-est (circa 37 min)[cite: 2].</div>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">1. Makris Gialos</div>
-          <div class="node-desc">Spiaggia di ciottoli bianchi con fondale trasparente e grotte per snorkeling.</div>
+          <div class="node-desc">Spiaggia di ciottoli bianchi con fondale trasparente e grotte per snorkeling[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Makris+Gialos+Beach+Zakynthos" target="_blank" class="btn-maps">📍 Makris Gialos Maps</a>
           <img src="makris-gialos.jpg" alt="Makris Gialos" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">2. Xigia Pelegaki Beach</div>
-          <div class="node-desc">La spettacolare caletta adiacente con mare turchese e scogliere.</div>
+          <div class="node-desc">La spettacolare caletta adiacente con mare turchese e scogliere[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Pelagaki+Beach+Xigia+Zakynthos" target="_blank" class="btn-maps">📍 Xigia Pelegaki Maps</a>
           <img src="xigia-pelegaki-1.jpg" alt="Xigia Pelegaki 1" class="place-img">
         </div>
 
         <div class="timeline-node">
           <div class="node-title">3. Xigia Sulfur Beach</div>
-          <div class="node-desc">Spiaggia sulfurea naturale con proprietà termali. ⚠️ <b>Non indossare argento</b> (si annerisce) e usa costumi scuri. Rientro a casa per le 19:00.</div>
+          <div class="node-desc">Spiaggia sulfurea naturale con proprietà termali. ⚠️ <b>Non indossare argento</b> (si annerisce) e usa costumi scuri. Rientro a casa per le 19:00[cite: 2].</div>
           <a href="https://www.google.com/maps/search/?api=1&query=Xigia+Sulfur+Beach+Zakynthos" target="_blank" class="btn-maps">📍 Xigia Sulfur Beach Maps</a>
           <img src="xigia-sulfur-1.jpg" alt="Xigia Sulfur 1" class="place-img">
         </div>
@@ -1696,12 +1714,12 @@
         <div class="day-period">🌙 Sera</div>
         <div class="timeline-node">
           <div class="node-title">Si scende alle ore 22:00</div>
-          <div class="node-desc">Cena fast ed economica per prepararsi all'ultima serata.</div>
+          <div class="node-desc">Cena fast ed economica per prepararsi all'ultima serata[cite: 2].</div>
         </div>
 
         <div class="timeline-node" style="border-left-color: #ffffff; background: #ffffff; border: 1px solid #d0e2ec;">
           <div class="node-title">⚪ Serata White Party</div>
-          <div class="node-desc">Outfit total white per l'ultima festa a Zante! (~15€ - 20€ ingresso).</div>
+          <div class="node-desc">Outfit total white per l'ultima festa a Zante! (~15€ - 20€ ingresso)[cite: 2].</div>
           <img src="white-party.jpg" alt="White Party" class="place-img">
         </div>
       </div>
@@ -1715,12 +1733,12 @@
 
         <div class="timeline-node">
           <div class="node-title">Check-Out Appartamenti (Ore 9:00 - 11:00)</div>
-          <div class="node-desc">Chiusura valigie e check-out presso i Paradise Apartments.</div>
+          <div class="node-desc">Chiusura valigie e check-out presso i Paradise Apartments[cite: 2].</div>
         </div>
 
         <div class="timeline-node">
           <div class="node-title">Consegna Auto (Ore 12:30)</div>
-          <div class="node-desc">Riconsegna auto anticipata in aeroporto per sbrigare i banchi stiva (23 kg) e controlli di sicurezza senza fretta.</div>
+          <div class="node-desc">Riconsegna auto anticipata in aeroporto per sbrigare i banchi stiva (23 kg) e controlli di sicurezza senza fretta[cite: 2].</div>
         </div>
 
         <div class="timeline-node" style="border-left-color: var(--sunset-coral);">
@@ -1926,31 +1944,29 @@
     autoSelectCurrentDay();
 
     if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js?v=' + new Date().getTime()) // Bypassa la cache di Safari per sw.js
-      .then((reg) => {
-        // Controlla se c'è un aggiornamento pronto
-        reg.addEventListener('updatefound', () => {
-          const newWorker = reg.installing;
-          newWorker.addEventListener('statechange', () => {
-            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              window.location.reload();
-            }
-          });
-        });
-      })
-      .catch((err) => console.error('Errore Service Worker:', err));
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js?v=' + new Date().getTime())
+          .then((reg) => {
+            reg.addEventListener('updatefound', () => {
+              const newWorker = reg.installing;
+              newWorker.addEventListener('statechange', () => {
+                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                  window.location.reload();
+                }
+              });
+            });
+          })
+          .catch((err) => console.error('Errore Service Worker:', err));
 
-    // Ricarica la vista se il controller cambia
-    let refreshing = false;
-    navigator.serviceWorker.addEventListener('controllerchange', () => {
-      if (!refreshing) {
-        refreshing = true;
-        window.location.reload();
-      }
-    });
-  });
-}
+        let refreshing = false;
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          if (!refreshing) {
+            refreshing = true;
+            window.location.reload();
+          }
+        });
+      });
+    }
   </script>
 </body>
 </html>
